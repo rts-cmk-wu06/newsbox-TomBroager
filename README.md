@@ -72,4 +72,4 @@ Dit projekt vil blive testet på en telefon (iPhone 11), så det er vigtigt at d
 I filen der hedder projektdokumentation.md skal du dokumentere dit projekt og de værktøjer du bruger, samt din proces.
 
 
-Rigtig god arbejdslyst
+Rigtig god arbejdslyst.
