@@ -7,3 +7,10 @@
 body {
   font-family: europa, sans-serif;
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+}
