@@ -1,8 +1,8 @@
 # Projektdokumentation
 
-#### Navn:
+#### Navn: Tom Broager
 
-##### Hold: 1146521c105 / WU05
+##### Hold: WU06
 
 ##### Uddannelse: Webudvikler
 
