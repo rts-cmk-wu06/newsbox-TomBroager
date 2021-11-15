@@ -27,6 +27,10 @@
 
 (Hvilke node-pakker har du installeret for at dit projekt virker? Beskriv kort hvilket "problem" hver pakke løser.)
 
+gulp		Gulp is the tast runner which will ultimately run our compilation task
+gulp-sass	Gulp sass is the sass task plugin for gulp which will compile our sass to css
+sass		The sass package is what the gulp sass plugin will use under the hood
+
 ---
 
 ### Argumentation for de valg du selvstændigt har truffet under løsningen af opgaven
