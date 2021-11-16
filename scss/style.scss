@@ -1,13 +1,15 @@
-// css reset
-@import "css-reset";
+// variables & functions
+@import 'variables';
 
-// font family
-@import url("https://use.typekit.net/ngy7nsb.css");
+// base & layout
+@import 'base';
 
-body {
-    font-family: europa, sans-serif;
-    // font-family: rift-soft, sans-serif;
-}
+// colors
+@import 'color-classes';
+
+// components (button, card nacbar)
+
+// utilities (margin, padding, opacity)
 
 nav {
     display: flex;
