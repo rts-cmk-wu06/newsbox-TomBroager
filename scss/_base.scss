@@ -3,13 +3,14 @@
 
 // reset styles
 * {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 // set main font family
 body {
+    margin: 0 auto;
     font-family: europa, sans-serif;
     // font-family: rift-soft, sans-serif;
 }

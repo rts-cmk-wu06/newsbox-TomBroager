@@ -1,0 +1,142 @@
+@use 'sass:math';
+
+// utilities map
+$utilities: (
+    'font-size': (
+        'prefix': 'font',
+        'values': (
+            'default': $base-font-size,
+            'xxsm': $font-size-xxsm,
+            'xsm': $font-size-xsm,
+            'sm': $font-size-sm,
+            'lg': $font-size-lg,
+            'xl': $font-size-xl,
+            'xxl': $font-size-xxl
+        )
+    ),
+
+    'display': (
+        'prefix': 'display',
+        'values': (
+            'n': none,
+            'b': block,
+            'f': flex,
+            'i': inline,
+            'i-b': inline-block
+        )
+    ),
+
+    'flex-direction': (
+        'prefix': 'flex-direction',
+        'values': (
+            'r': row,
+            'r-r': row-reverse,
+            'c': column,
+            'c-r': column-reverse,
+        )
+    ),
+
+    'justify-content': (
+        'prefix': 'justify-content',
+        'values': (
+            'c': center,
+            's-b': space-between,
+            's-a': space-around,
+            's-e': space-evenly,
+            's': start,
+            'e': end,
+            'l': left,
+            'r': right
+        )
+    ),
+
+    'align-items': (
+        'prefix': 'align-items',
+        'values': (
+            'c': center,
+            's': start,
+            'e': end,
+            'f-s': flex-start,
+            'f-e': flex-end,
+            'b-l': baseline
+        )
+    ),
+
+    'padding': (
+        'prefix': 'padding',
+        'values': (
+            'default': $base-padding,
+            '1': $base-padding * 1.5,
+            '2': $base-padding * 2,
+            '3': $base-padding * 4,
+            '4': $base-padding * 6,
+            '5': $base-padding * 8
+        )
+    ),
+
+    'padding-top': (
+        'prefix': 'padding-top',
+        'values': (
+            'default': $base-padding,
+            '1': $base-padding * 1.5,
+            '2': $base-padding * 2,
+            '3': $base-padding * 4,
+            '4': $base-padding * 6,
+            '5': $base-padding * 8
+        )
+    ),
+
+    'padding-bottom': (
+        'prefix': 'padding-bottom',
+        'values': (
+            'default': $base-padding,
+            '1': $base-padding * 1.5,
+            '2': $base-padding * 2,
+            '3': $base-padding * 4,
+            '4': $base-padding * 6,
+            '5': $base-padding * 8
+        )
+    ),
+
+    'padding-left': (
+        'prefix': 'padding-left',
+        'values': (
+            'default': $base-padding,
+            '1': $base-padding * 1.5,
+            '2': $base-padding * 2,
+            '3': $base-padding * 4,
+            '4': $base-padding * 6,
+            '5': $base-padding * 8
+        )
+    ),
+
+    'padding-right': (
+        'prefix': 'padding-right',
+        'values': (
+            'default': $base-padding,
+            '1': $base-padding * 1.5,
+            '2': $base-padding * 2,
+            '3': $base-padding * 4,
+            '4': $base-padding * 6,
+            '5': $base-padding * 8
+        )
+    )
+);
+
+// generate utilities classnames
+@each $property, $map in $utilities {               // for each property map in utilities (exsample property: font-size)
+    $prefix: map-get($map, 'prefix' );              // key for each map (exsample font)
+    $values: map-get($map, 'values' );              // val for each map (exsample sm)
+
+    @each $key, $val in $values {
+        @if($key == 'default') {
+            .#{$prefix} {                           // .font
+                #{$property}: $val;                 // font-size: $base-font-size 
+            }
+        } @else {
+            .#{$prefix}-#{$key} {                   // .prefixValue-valuesKey = css selector = .font-sm
+                #{$property}: $val;                 // property: valuesKeyValue; = font-size: $font-size-sm;
+            }
+        }
+    }
+}
