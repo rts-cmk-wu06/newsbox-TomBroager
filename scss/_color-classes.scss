@@ -1,0 +1,35 @@
+// generate color classnames for text & background color included light and dark variations - using the $colors map
+
+@each $key, $val in $colors {
+    .text-#{$key} {
+        color: $val;
+    }
+    .bg-#{$key} {
+        background: $val;
+    }
+
+    // generate classnames for all text/background colors light/dark variations except white and black
+    
+    @if($val != white and $val != black) {
+
+        // light variations
+        @for $i from 1 through 9 {
+            .text-#{$key}-light-#{$i} {
+                color: mix(white, $val, $i * 10);
+            }
+            .bg-#{$key}-light-#{$i} {
+                color: mix(white, $val, $i * 10);
+            }
+        }
+        
+        // dark variations
+        @for $i from 1 through 9 {
+            .text-#{$key}-dark-#{$i} {
+                color: mix(black, $val, $i * 10);
+            }
+            .bg-#{$key}-dark-#{$i} {
+                color: mix(black, $val, $i * 10);
+            }
+        }
+    }
+}
