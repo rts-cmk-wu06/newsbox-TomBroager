@@ -1,0 +1,52 @@
+// font size variables
+$base-font-size: 0.938rem;                  // 15px
+$font-size-xxsm: $base-font-size * 0.67;    // 10px
+$font-size-xsm: $base-font-size * 0.8;      // 12px
+$font-size-sm: $base-font-size * 0.933;     // 14px
+$font-size-lg: $base-font-size * 1.2;       // 18px
+$font-size-xl: $base-font-size * 1.6;       // 24px
+$font-size-xxl: $base-font-size * 2;        // 30px
+
+// font weight variables
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weight-bold: 700;
+
+// borders variables
+$base-border-width: 1px;
+$base-border-radius: 50%;
+
+// padding variables
+$base-padding: 1rem;
+
+// primary colors variables
+$primary-one: #87bcbf;
+$primary-two: #d97d54;
+$primary-three: #324755;
+$primary-four: #d95454;
+
+// secondary colors variables
+$secondary-one: #f0f3f4;
+$secondary-two: #c8d1d3;
+$secondary-three: #b9b0a2;
+
+// typography colors variables
+$typo-color-one: #1b1c20;
+$typo-color-two: #6e8ca0;
+$typo-color-three: #ffffff;
+
+// Color palette map
+$colors: (
+    "primary-one": $primary-one,
+    "primary-two": $primary-two,
+    "primary-three": $primary-three,
+    "primary-four": $primary-four,
+    "typo-color-one": $typo-color-one,
+    "typo-color-two": $typo-color-two,
+    "typo-color-three": $typo-color-three,
+    "secondary-one": $secondary-one,
+    "secondary-two": $secondary-two,
+    "secondary-three": $secondary-three,
+    "black": black,
+    "white": white,
+);
