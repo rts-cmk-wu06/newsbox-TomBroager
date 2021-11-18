@@ -5,30 +5,39 @@ let bool = true;
 
 axios.get(url).then((response) => {
    const article = response.data.results;
+
+   // loops through NewYorkTimes array
+   // check if category allready exists in categoryArray
+   // if not, the category is pushed to categoryArray
    article.forEach((article) => {
       if (!categoryArray.includes(article.section)) {
          categoryArray.push(article.section);
       }
    });
 
+   // create a category card element for each category in categoryArray
    categoryArray.forEach((cat) => {
+
+      if(cat === 'well' || cat === 'sports' || cat === 'business' || cat === 'arts') {
+
+         const wrapper = document.createElement("div");
+         wrapper.classList.add("Cat-selection-card", "display-f", "align-items-c");
+         section.appendChild(wrapper);
+   
+         const heading = document.createElement("h2");
+         heading.classList.add('Cat-selection-card__heading');
+         heading.textContent = cat;
+         wrapper.appendChild(heading);
+   
+         const toggleButton = document.createElement("button");
+         toggleButton.classList.add("ToggleButton");
+         wrapper.appendChild(toggleButton);
+   
+         const toggleButtonCircle = document.createElement("div");
+         toggleButtonCircle.classList.add("ToggleButton__circle");
+         toggleButton.appendChild(toggleButtonCircle);
+      }
     
-      const wrapper = document.createElement("div");
-      wrapper.classList.add("Cat-selection-card", "display-f", "align-items-c");
-      section.appendChild(wrapper);
-
-      const heading = document.createElement("h2");
-      heading.classList.add('Cat-selection-card__heading');
-      heading.textContent = cat;
-      wrapper.appendChild(heading);
-
-      const toggleButton = document.createElement("button");
-      toggleButton.classList.add("ToggleButton");
-      wrapper.appendChild(toggleButton);
-
-      const toggleButtonCircle = document.createElement("div");
-      toggleButtonCircle.classList.add("ToggleButton__circle");
-      toggleButton.appendChild(toggleButtonCircle);
    });
 });
 

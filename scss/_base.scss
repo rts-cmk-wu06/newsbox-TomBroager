@@ -10,8 +10,10 @@
 
 // set main font family
 body {
+    height: 100vh;
     margin: 0 auto;
     font-family: europa, sans-serif;
+    background-color: $secondary-one;
     // font-family: rift-soft, sans-serif;
 }
 
