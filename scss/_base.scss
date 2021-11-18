@@ -8,13 +8,32 @@
     box-sizing: border-box;
 }
 
+.dark-mode {
+    background-color: $primary-three;
+    header {
+        background-color: $typo-color-one;
+    }
+    .section {
+        background-color: $typo-color-two;
+    }
+    footer {
+        background-color: $primary-three;
+    }
+
+    footer p {
+        color: $typo-color-three;
+    }
+    h1, h2, i {
+        color: $typo-color-three;
+    }
+}
+
 // set main font family
 body {
     height: 100vh;
     margin: 0 auto;
     font-family: europa, sans-serif;
     background-color: $secondary-one;
-    // font-family: rift-soft, sans-serif;
 }
 
 i {

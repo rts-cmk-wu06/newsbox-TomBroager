@@ -5,8 +5,7 @@ var section = document.querySelector("#section");
 var categoryArray = ["europa"];
 var bool = true;
 axios.get(url).then(function (response) {
-  var article = response.data.results;
-  console.log(article); // loops through NewYorkTimes array
+  var article = response.data.results; // loops through NewYorkTimes array
   // check if category allready exists in categoryArray
   // if not, the category is pushed to categoryArray
 
@@ -17,8 +16,6 @@ axios.get(url).then(function (response) {
   }); // create a category card element for each category in categoryArray
 
   categoryArray.forEach(function (cat) {
-    console.log(cat);
-
     if (cat === 'well' || cat === 'sports' || cat === 'business' || cat === 'arts') {
       var wrapper = document.createElement("div");
       wrapper.classList.add("Cat-selection-card", "display-f", "align-items-c");

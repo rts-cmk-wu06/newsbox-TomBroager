@@ -5,6 +5,25 @@
   box-sizing: border-box;
 }
 
+.dark-mode {
+  background-color: #324755;
+}
+.dark-mode header {
+  background-color: #1b1c20;
+}
+.dark-mode .section {
+  background-color: #6e8ca0;
+}
+.dark-mode footer {
+  background-color: #324755;
+}
+.dark-mode footer p {
+  color: #ffffff;
+}
+.dark-mode h1, .dark-mode h2, .dark-mode i {
+  color: #ffffff;
+}
+
 body {
   height: 100vh;
   margin: 0 auto;
