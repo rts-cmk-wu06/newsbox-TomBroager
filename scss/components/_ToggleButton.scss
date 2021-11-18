@@ -1,0 +1,29 @@
+.ToggleButton {
+    width: 54px;
+    height: 30px;
+    border: none;
+    border-radius: $base-border-radius * 2.5;
+    background-color: $secondary-two;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    cursor: pointer;
+
+    &_active {
+        background-color: $primary-one;
+    }
+
+    &__circle {
+        background-color: white;
+        transform: translateX(0px);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        transition: 300ms;
+
+        &_active {
+            transform: translateX(22px);
+            transition: 300ms;
+        }
+    }
+}

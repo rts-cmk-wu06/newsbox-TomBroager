@@ -1,0 +1,18 @@
+.Cat-selection-card {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: $base-border-width solid $secondary-one;
+    padding: 0 $base-padding;
+    
+    &__heading{
+        font-family: rift-soft, sans-serif;
+        font-size: $base-font-size;
+        font-weight: $font-weight-bold;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}

@@ -3,7 +3,8 @@ $base-font-size: 0.938rem;                  // 15px
 $font-size-xxsm: $base-font-size * 0.67;    // 10px
 $font-size-xsm: $base-font-size * 0.8;      // 12px
 $font-size-sm: $base-font-size * 0.933;     // 14px
-$font-size-lg: $base-font-size * 1.2;       // 18px
+$font-size-m: $base-font-size * 1.2;        // 18px
+$font-size-lg: $base-font-size * 1.33;      // 20px
 $font-size-xl: $base-font-size * 1.6;       // 24px
 $font-size-xxl: $base-font-size * 2;        // 30px
 
@@ -14,10 +15,14 @@ $font-weight-bold: 700;
 
 // borders variables
 $base-border-width: 1px;
-$base-border-radius: 25%;
+$base-border-radius: 10px;
 
 // padding variables
 $base-padding: 1rem;
+
+// margin variables
+$base-margin-top: 10px;
+$base-margin-bottom: 10px;
 
 // primary colors variables
 $primary-one: #87bcbf;

@@ -18,10 +18,28 @@
     <header>
         <nav class="display-f justify-content-s-b align-items-c padding">
             <a href="index.html"><i class="fas fa-chevron-left"></i></a>
-            <h1>News settings</h1>
+            <h1 class="font-weight-b">News settings</h1>
             <i class="fas fa-cog"></i>
         </nav>
     </header>
-    <script src="./babel-js/fetch.js"></script>
+    <main class="padding display-f flex-direction-c bg-secondary-one">
+        <p class="font-xxl font-weight-b text-primary-one align-self-c margin-top-1">Manage</p>
+        <h2 class="font-lg text-typo-color-one-light-3 align-self-c">Categories</h2>
+        <hr class="border-width-1 border-style-s bg-typo-color-three text-typo-color-three width-1 align-self-c margin-top-2 margin-bottom-4">
+        <section class="section display-f flex-direction-c bg-white border-radius-1" id="section">
+            <div class="Cat-selection-card">
+                <h2 class="Cat-selection-card__heading">EUROPA</h2>
+                <button class="ToggleButton">
+                    <div class="ToggleButton__circle"></div>
+                </button>
+            </div>
+        </section>
+        <button class="Toggle-dark-mode margin-top-4">toggle dark mode</button>
+    </main>
+    <footer class="display-f justify-content-c padding bg-secondary-one">
+        <p class="text-primary-one font-xsm">Version 1.00</p>
+    </footer>
+    <!-- <script src="./js/fetch.js"></script> -->
+    <script src="./js/components/Cat-selection-card.js"></script>
 </body>
 </html>

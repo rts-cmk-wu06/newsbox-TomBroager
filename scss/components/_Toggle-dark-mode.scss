@@ -1,0 +1,9 @@
+.Toggle-dark-mode {
+    width: fit-content;
+    align-self: center;
+    padding: $base-padding $base-padding * 2;
+    border: $base-border-width solid $secondary-two;
+    border-radius: $base-border-radius * 2.5;
+    font-family: rift-soft, sans-serif;
+    font-weight: $font-weight-bold;
+}
