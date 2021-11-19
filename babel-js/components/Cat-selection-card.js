@@ -3,7 +3,7 @@
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 var section = document.querySelector("#section");
 var categoryArray = ["europa"];
-var bool = true;
+console.log(categoryArray);
 axios.get(url).then(function (response) {
   var article = response.data.results; // loops through NewYorkTimes array
   // check if category allready exists in categoryArray
@@ -37,11 +37,16 @@ axios.get(url).then(function (response) {
 section.addEventListener("click", function (e) {
   var target = e.target;
   var targetParent = target.parentElement;
+  var targetCat = targetParent.parentElement; // if target contains className x then toggle/add on className y - if not toggle/remove className y off
 
-  if (e.target.classList.contains("ToggleButton__circle")) {
-    target.classList.toggle("ToggleButton__circle_active");
+  if (target.classList.contains("ToggleButton__circle")) {
+    // target.classList.toggle("ToggleButton__circle_active");
     targetParent.classList.toggle("ToggleButton_active");
-    bool = !bool;
-    console.log(target.parentElement);
+    console.log('targetCat ', targetCat.textContent);
+  }
+
+  if (target.classList.contains('ToggleButton__circle_active')) {
+    var node = document.querySelector('.Cat-selection-card__heading');
+    console.log(target.parentElement.parentElement.textContent); // console.log('node: ', node.textContent);
   }
 });

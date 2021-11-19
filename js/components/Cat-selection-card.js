@@ -1,7 +1,7 @@
 const url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 const section = document.querySelector("#section");
-const categoryArray = ["europa"];
-let bool = true;
+const categoryArray = ["europa"];   // array contains fetched categories from NewYorkTimes API
+const selectedCategory = [];  // array contains value of selected/toggled categories
 
 axios.get(url).then((response) => {
    const article = response.data.results;
@@ -41,15 +41,35 @@ axios.get(url).then((response) => {
    });
 });
 
-// toggle class on/off toggle button element - CSS for switch to move
+// toggle class on/off - for CSS for switch to move
 section.addEventListener("click", (e) => {
+   
    const target = e.target;
    const targetParent = target.parentElement;
-   if (e.target.classList.contains("ToggleButton__circle")) {
-      target.classList.toggle("ToggleButton__circle_active");
+   const targetCat = targetParent.parentElement;
+   
+   // if target contains className x then toggle/add on className y - if not toggle/remove className y off
+   if (target.classList.contains("ToggleButton__circle")) {
+      target.classList.toggle("ToggleButton__circle_active");  // måske kun en class?????????
       targetParent.classList.toggle("ToggleButton_active");
-      bool = !bool;
-      console.log(target.parentElement);
-   }
+      
+      
+      if(selectedCategory.includes(targetCat.textContent)) {
+         const deleteItem = selectedCategory.indexOf(targetCat.textContent)
+         selectedCategory.splice(deleteItem, 1);
+         console.log('aready exists');
+      } else {
+         // push selected category to selectedArray
+         selectedCategory.push(targetCat.textContent);
+      }
+   };
+   
+
+   // store selectedArray in localStorage key seledtedCategory
+   localStorage.setItem("selectedCategory", JSON.stringify(selectedCategory));
+   
+   // console.log('targetCat ', targetCat.textContent);
+   // console.log('selectedCategory: ', selectedCategory);
+
 });
 

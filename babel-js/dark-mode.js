@@ -22,17 +22,22 @@ var disableDarkMode = function disableDarkMode() {
 
 if (darkMode === 'enabled') {
   enableDarkMode();
-} // When someone clicks the button
+}
 
+; // if toggle button exists then add click event
 
-darkModeToggle.addEventListener('click', function () {
-  // get their darkMode setting
-  darkMode = localStorage.getItem('darkMode'); // if it not current enabled, enable it
+if (darkModeToggle) {
+  // When someone clicks the button
+  darkModeToggle.addEventListener('click', function () {
+    // get their darkMode setting
+    darkMode = localStorage.getItem('darkMode'); // if it not current enabled, enable it
 
-  if (darkMode !== 'enabled') {
-    enableDarkMode(); // if it has been enabled, turn it off  
-  } else {
-    disableDarkMode();
-  }
-});
-console.log('test');
+    if (darkMode !== 'enabled') {
+      enableDarkMode(); // if it has been enabled, turn it off  
+    } else {
+      disableDarkMode();
+    }
+  });
+}
+
+;
