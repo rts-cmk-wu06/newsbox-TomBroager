@@ -66,7 +66,7 @@ section.addEventListener("click", (e) => {
    
 
    // store selectedArray in localStorage key seledtedCategory
-   localStorage.setItem("selectedCategory", JSON.stringify(selectedCategory));
+   localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
    
    // console.log('targetCat ', targetCat.textContent);
    // console.log('selectedCategory: ', selectedCategory);
