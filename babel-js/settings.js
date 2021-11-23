@@ -1,5 +1,7 @@
 "use strict";
 
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 var section = document.querySelector("#section");
 var categoryArray = ["europa"]; // array contains fetched categories from NewYorkTimes API
@@ -45,19 +47,38 @@ section.addEventListener("click", function (e) {
     target.classList.toggle("ToggleButton__circle_active"); // måske kun en class?????????
 
     targetParent.classList.toggle("ToggleButton_active");
+    var catObject = {
+      category: targetCat.textContent,
+      enable: target.toggleAttribute('enable')
+    };
+    console.log(catObject);
+    console.log(catObject.enable);
 
-    if (selectedCategory.includes(targetCat.textContent)) {
-      var deleteItem = selectedCategory.indexOf(targetCat.textContent);
-      selectedCategory.splice(deleteItem, 1);
-      console.log('aready exists');
+    if (!catObject.enable === true) {
+      console.log('deleted');
     } else {
       // push selected category to selectedArray
-      selectedCategory.push(targetCat.textContent);
-    }
+      selectedCategory.push(catObject);
+      console.log('pushed', catObject);
+    } // if(selectedCategory.includes(targetCat.textContent)) {
+    //    const deleteItem = selectedCategory.indexOf(targetCat.textContent)
+    //    selectedCategory.splice(deleteItem, 1);
+    //    console.log('aready exists');
+    // } else {
+    //    // push selected category to selectedArray
+    //    selectedCategory.push(targetCat.textContent);
+    // }
+
   }
 
   ; // store selectedArray in localStorage key seledtedCategory
 
-  localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory)); // console.log('targetCat ', targetCat.textContent);
-  // console.log('selectedCategory: ', selectedCategory);
+  localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
+  console.log('selectedCategory: ', selectedCategory);
+  selectedCategory.forEach(function (data) {
+    return console.log(data);
+  });
+  selectedCategory.filter(function (value, index, arr) {
+    return arr.indexOf(value) == index;
+  }), _readOnlyError("selectedCategory");
 });
