@@ -36,6 +36,17 @@ $utilities: (
         )
     ),
 
+    'flex': (
+        'prefix': 'flex',
+        'values': (
+            '1': 1,
+            '2': 2,
+            '3': 3,
+            '4': 4,
+            '5': 5
+        )
+    ),
+
     'flex-direction': (
         'prefix': 'flex-direction',
         'values': (
@@ -57,6 +68,15 @@ $utilities: (
             'e': end,
             'l': left,
             'r': right
+        )
+    ),
+
+    'justify-self': (
+        'prefix': 'justify-self',
+        'values': (
+            'c': center,
+            's': start,
+            'e': end
         )
     ),
 
@@ -158,6 +178,18 @@ $utilities: (
     
     'margin-bottom': (
         'prefix': 'margin-bottom',
+        'values': (
+            'default': $base-margin-bottom,
+            '1': $base-margin-bottom * 1.5,
+            '2': $base-margin-bottom * 2,
+            '3': $base-margin-bottom * 4,
+            '4': $base-margin-bottom * 6,
+            '5': $base-margin-bottom * 8
+        )
+    ),
+
+    'margin-left': (
+        'prefix': 'margin-left',
         'values': (
             'default': $base-margin-bottom,
             '1': $base-margin-bottom * 1.5,

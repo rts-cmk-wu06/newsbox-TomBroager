@@ -1431,7 +1431,7 @@ h1 {
   background: white;
 }
 
-.Cat-selection-card {
+.CategoryList {
   height: 70px;
   display: flex;
   justify-content: space-between;
@@ -1439,13 +1439,40 @@ h1 {
   border-bottom: 1px solid #f0f3f4;
   padding: 0 1rem;
 }
-.Cat-selection-card__heading {
+.CategoryList__heading {
   font-family: rift-soft, sans-serif;
   font-size: 0.938rem;
   font-weight: 700;
 }
-.Cat-selection-card:last-child {
+.CategoryList:last-child {
   border-bottom: none;
+}
+
+.SelectedCategoryList {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f0f3f4;
+}
+.SelectedCategoryList__div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-left: 1rem;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0px 10px 30px rgba(200, 209, 211, 0.8);
+}
+.SelectedCategoryList__heading {
+  flex: 1;
+  font-family: rift-soft, sans-serif;
+  font-size: 0.938rem;
+  font-weight: 700;
+  margin-left: 15px;
+}
+.SelectedCategoryList__i {
+  margin-right: 1rem;
 }
 
 .ToggleButton {
@@ -1483,6 +1510,26 @@ h1 {
   border-radius: 25px;
   font-family: rift-soft, sans-serif;
   font-weight: 700;
+}
+
+.SearchBar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+  border: 1px solid #f0f3f4;
+}
+.SearchBar__input {
+  flex: 1;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f3f4;
+  padding: 13px 10px;
+}
+.SearchBar__i {
+  position: absolute;
+  right: 32px;
 }
 
 .font {
@@ -1549,6 +1596,26 @@ h1 {
   display: inline-block;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
 .flex-direction-r {
   flex-direction: row;
 }
@@ -1595,6 +1662,18 @@ h1 {
 
 .justify-content-r {
   justify-content: right;
+}
+
+.justify-self-c {
+  justify-self: center;
+}
+
+.justify-self-s {
+  justify-self: start;
+}
+
+.justify-self-e {
+  justify-self: end;
 }
 
 .align-items-c {
@@ -1811,6 +1890,30 @@ h1 {
 
 .margin-bottom-5 {
   margin-bottom: 80px;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.margin-left-1 {
+  margin-left: 15px;
+}
+
+.margin-left-2 {
+  margin-left: 20px;
+}
+
+.margin-left-3 {
+  margin-left: 40px;
+}
+
+.margin-left-4 {
+  margin-left: 60px;
+}
+
+.margin-left-5 {
+  margin-left: 80px;
 }
 
 .border-radius {

@@ -1,8 +1,7 @@
 // array contains selected categories
-const catItems = JSON.parse(localStorage.getItem("selectedCategories"));
+const categoryList = JSON.parse(localStorage.getItem("selectedCategories"));
 const main = document.querySelector('main');
-const section = document.querySelector('.sectionCategory');
-
+// const section = document.querySelector('.sectionCategory');
 const badge = `
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.914" height="18.914" viewBox="0 0 18.914 18.914">
       <defs>
@@ -19,17 +18,25 @@ const badge = `
     </svg> 
   `;
 
-catItems.forEach(element => {
+categoryList.forEach(element => {
     console.log(element);
-    const categoryName = element.category;
-    const section = document.createElement('section');
-    section.classList.add('display-f', 'align-items-c')
-    main.appendChild(section)
-    
-    section.innerHTML = badge;
-    const cat = document.createElement('h2');
-    cat.textContent = categoryName;
-      
+    const categoryItem = element.category;
 
-    section.appendChild(cat);
+    const section = document.createElement('section');
+    section.classList.add('SelectedCategoryList');
+    main.appendChild(section)
+
+    const div = document.createElement('div');
+    div.innerHTML = badge;
+    div.classList.add('SelectedCategoryList__div');
+    section.appendChild(div);
+
+    const h2 = document.createElement('h2');
+    h2.textContent = categoryItem;
+    h2.classList.add('SelectedCategoryList__heading');
+    section.appendChild(h2);
+
+    const arrowIcon = document.createElement('i');
+    arrowIcon.classList.add('fas', 'fa-chevron-right', 'SelectedCategoryList__i');
+    section.appendChild(arrowIcon);
 });

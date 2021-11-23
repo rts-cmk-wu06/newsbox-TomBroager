@@ -3,15 +3,16 @@
 
 // base & layout
 @import 'base';
-// @import 'variables';
 
 // colors
 @import 'color-className';
 
 // components (button, card nacbar)
-@import 'components/Cat-selection-card';
+@import 'components/CategoryList';
+@import 'components/SelectedCategoryList';
 @import 'components/ToggleButton';
 @import 'components/Toggle-dark-mode';
+@import 'components/SearchBar';
 
 // utilities (margin, padding, opacity)
 @import 'utilities-className';

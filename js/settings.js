@@ -1,33 +1,32 @@
 const url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 const section = document.querySelector("#section");
-const categoryArray = ["europa"];   // array contains fetched categories from NewYorkTimes API
-let selectedCategory = [];  // array contains value of selected/toggled categories
-
+const categoryList = ["europa"];   // array contains fetched categories from NewYorkTimes API
+let selectedCategory = [];  // array contains selected/toggled categories
 
 
 axios.get(url).then((response) => {
    const article = response.data.results;
    
-   // loops through NewYorkTimes array
-   // check if category allready exists in categoryArray
+   // create NewYorkTimes categoryArray
+   // loops through categoryArray and check if a category allready exists
    // if not, the category is pushed to categoryArray
    article.forEach((article) => {
-      if (!categoryArray.includes(article.section)) {
-         categoryArray.push(article.section);
+      if (!categoryList.includes(article.section)) {
+         categoryList.push(article.section);
       }
    });
    
-   // create a category card element for each category in categoryArray
-   categoryArray.forEach((cat) => {
+   // create a category card element and toggle button for each category in categoryArray
+   categoryList.forEach((cat) => {
       
       if(cat === 'well' || cat === 'sports' || cat === 'business' || cat === 'arts') {
          
          const wrapper = document.createElement("div");
-         wrapper.classList.add("Cat-selection-card", "display-f", "align-items-c");
+         wrapper.classList.add("CategoryList", "display-f", "align-items-c");
          section.appendChild(wrapper);
          
          const heading = document.createElement("h2");
-         heading.classList.add('Cat-selection-card__heading');
+         heading.classList.add('CategoryList__heading');
          heading.textContent = cat;
          wrapper.appendChild(heading);
          
@@ -60,18 +59,15 @@ section.addEventListener("click", (e) => {
          category: targetCat.textContent,
          enable: target.toggleAttribute('enable'),
       };
-      console.log(catObject);
-      console.log(catObject.enable);
       
       // selectedCategory = selectedCategory.filter((item) => catObject.category !== item.category);
-
+      
       selectedCategory = selectedCategory.filter(function (category) {  // category is the value of selectedCategory Array = {category: 'sport', enable: true}
          return catObject.category !== category.category; // returned in filtered Array
       });
-
       
       if(catObject.enable === true) {
-         // push selected category to selectedArray
+         // push selected category to selectedCategory Array
          selectedCategory.push(catObject);
          console.log('pushed', catObject);
       };
@@ -80,21 +76,5 @@ section.addEventListener("click", (e) => {
 
       localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
       
-      // if(selectedCategory.includes(targetCat.textContent)) {
-         //    const deleteItem = selectedCategory.indexOf(targetCat.textContent)
-         //    selectedCategory.splice(deleteItem, 1);
-         //    console.log('aready exists');
-         // } else {
-            //    // push selected category to selectedArray
-            //    selectedCategory.push(targetCat.textContent);
-            // }
-         };
-         
-         // store selectedArray in localStorage key seledtedCategory
-
-         
-         
-         
-      });
-      
-      
+   };
+});

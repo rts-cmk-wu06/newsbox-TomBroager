@@ -1,0 +1,33 @@
+.SelectedCategoryList {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: $base-border-width solid $secondary-one;
+
+    &__div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        margin-left: 1rem;
+        background: $typo-color-three;
+        border-radius: 50%;
+        box-shadow: 0px 10px 30px rgba($color: $secondary-two, $alpha: .8);
+    }
+    
+    &__heading {
+        flex: 1;
+        font-family: rift-soft, sans-serif;
+        font-size: $base-font-size;
+        font-weight: $font-weight-bold;
+        margin-left: 15px;
+    }
+
+    &__i {
+        margin-right: 1rem;
+    }
+
+    // &:last-child {
+    //     border-bottom: none;
+    // }
+}

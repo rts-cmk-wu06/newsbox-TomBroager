@@ -2,6 +2,7 @@
 
 // check for saved 'darkMode' in localStorage
 var darkMode = localStorage.getItem('darkMode');
+console.log('darkmode: ', darkMode);
 var darkModeToggle = document.querySelector('#Toggle-dark-mode');
 
 var enableDarkMode = function enableDarkMode() {

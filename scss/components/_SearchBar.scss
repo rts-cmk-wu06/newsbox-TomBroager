@@ -1,0 +1,25 @@
+@use 'sass:math';
+
+.SearchBar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $base-padding $base-padding;
+    border: $base-border-width solid $secondary-one;
+
+
+    &__input {
+        flex: 1;
+        border: none;
+        border-radius: math.div($base-border-radius, 2);
+        background-color: $secondary-one;
+        padding: 13px 10px;
+    }
+
+    &__i {
+        position: absolute;
+        right: 32px;
+    }
+    
+}

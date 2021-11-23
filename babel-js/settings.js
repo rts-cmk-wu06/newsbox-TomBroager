@@ -1,31 +1,29 @@
 "use strict";
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 var section = document.querySelector("#section");
-var categoryArray = ["europa"]; // array contains fetched categories from NewYorkTimes API
+var categoryList = ["europa"]; // array contains fetched categories from NewYorkTimes API
 
-var selectedCategory = []; // array contains value of selected/toggled categories
+var selectedCategory = []; // array contains selected/toggled categories
 
 axios.get(url).then(function (response) {
-  var article = response.data.results; // loops through NewYorkTimes array
-  // check if category allready exists in categoryArray
+  var article = response.data.results; // create NewYorkTimes categoryArray
+  // loops through categoryArray and check if a category allready exists
   // if not, the category is pushed to categoryArray
 
   article.forEach(function (article) {
-    if (!categoryArray.includes(article.section)) {
-      categoryArray.push(article.section);
+    if (!categoryList.includes(article.section)) {
+      categoryList.push(article.section);
     }
-  }); // create a category card element for each category in categoryArray
+  }); // create a category card element and toggle button for each category in categoryArray
 
-  categoryArray.forEach(function (cat) {
+  categoryList.forEach(function (cat) {
     if (cat === 'well' || cat === 'sports' || cat === 'business' || cat === 'arts') {
       var wrapper = document.createElement("div");
-      wrapper.classList.add("Cat-selection-card", "display-f", "align-items-c");
+      wrapper.classList.add("CategoryList", "display-f", "align-items-c");
       section.appendChild(wrapper);
       var heading = document.createElement("h2");
-      heading.classList.add('Cat-selection-card__heading');
+      heading.classList.add('CategoryList__heading');
       heading.textContent = cat;
       wrapper.appendChild(heading);
       var toggleButton = document.createElement("button");
@@ -46,39 +44,28 @@ section.addEventListener("click", function (e) {
   if (target.classList.contains("ToggleButton__circle")) {
     target.classList.toggle("ToggleButton__circle_active"); // måske kun en class?????????
 
-    targetParent.classList.toggle("ToggleButton_active");
+    targetParent.classList.toggle("ToggleButton_active"); // object with category name and togglemode enable(true)/disable(false)
+
     var catObject = {
       category: targetCat.textContent,
       enable: target.toggleAttribute('enable')
-    };
-    console.log(catObject);
-    console.log(catObject.enable);
+    }; // selectedCategory = selectedCategory.filter((item) => catObject.category !== item.category);
 
-    if (!catObject.enable === true) {
-      console.log('deleted');
-    } else {
-      // push selected category to selectedArray
+    selectedCategory = selectedCategory.filter(function (category) {
+      // category is the value of selectedCategory Array = {category: 'sport', enable: true}
+      return catObject.category !== category.category; // returned in filtered Array
+    });
+
+    if (catObject.enable === true) {
+      // push selected category to selectedCategory Array
       selectedCategory.push(catObject);
       console.log('pushed', catObject);
-    } // if(selectedCategory.includes(targetCat.textContent)) {
-    //    const deleteItem = selectedCategory.indexOf(targetCat.textContent)
-    //    selectedCategory.splice(deleteItem, 1);
-    //    console.log('aready exists');
-    // } else {
-    //    // push selected category to selectedArray
-    //    selectedCategory.push(targetCat.textContent);
-    // }
+    }
 
+    ;
+    console.log('selectedCategory: ', selectedCategory);
+    localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
   }
 
-  ; // store selectedArray in localStorage key seledtedCategory
-
-  localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
-  console.log('selectedCategory: ', selectedCategory);
-  selectedCategory.forEach(function (data) {
-    return console.log(data);
-  });
-  selectedCategory.filter(function (value, index, arr) {
-    return arr.indexOf(value) == index;
-  }), _readOnlyError("selectedCategory");
+  ;
 });
