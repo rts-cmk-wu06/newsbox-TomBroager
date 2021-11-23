@@ -8,6 +8,7 @@
     box-sizing: border-box;
 }
 
+
 .dark-mode {
     background-color: $primary-three;
     header {
@@ -25,6 +26,10 @@
     }
     h1, h2, i {
         color: $typo-color-three;
+    }
+
+    form i {
+        color: $primary-three;
     }
 }
 
