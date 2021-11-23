@@ -52,24 +52,37 @@ section.addEventListener("click", (e) => {
    if (target.classList.contains("ToggleButton__circle")) {
       target.classList.toggle("ToggleButton__circle_active");  // måske kun en class?????????
       targetParent.classList.toggle("ToggleButton_active");
-      
-      
-      if(selectedCategory.includes(targetCat.textContent)) {
-         const deleteItem = selectedCategory.indexOf(targetCat.textContent)
-         selectedCategory.splice(deleteItem, 1);
-         console.log('aready exists');
+
+      const catObject = {
+         category: targetCat.textContent,
+         enable: target.toggleAttribute('enable'),
+      };
+      console.log(catObject);
+      console.log(catObject.enable);
+
+      if(!catObject.enable === true) {
+         console.log('deleted');
       } else {
          // push selected category to selectedArray
-         selectedCategory.push(targetCat.textContent);
+         selectedCategory.push(catObject);
+         console.log('pushed', catObject);
       }
+      
+      // if(selectedCategory.includes(targetCat.textContent)) {
+      //    const deleteItem = selectedCategory.indexOf(targetCat.textContent)
+      //    selectedCategory.splice(deleteItem, 1);
+      //    console.log('aready exists');
+      // } else {
+      //    // push selected category to selectedArray
+      //    selectedCategory.push(targetCat.textContent);
+      // }
    };
    
 
    // store selectedArray in localStorage key seledtedCategory
    localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
    
-   // console.log('targetCat ', targetCat.textContent);
-   // console.log('selectedCategory: ', selectedCategory);
+   console.log('selectedCategory: ', selectedCategory);
 
 });
 
