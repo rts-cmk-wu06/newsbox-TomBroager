@@ -6,6 +6,9 @@ let selectedCategory = [];  // array contains selected/toggled categories
 
 axios.get(url).then((response) => {
    const article = response.data.results;
+
+   let x = article[0];
+   console.log(x);
    
    // create NewYorkTimes categoryArray
    // loops through categoryArray and check if a category allready exists
@@ -14,7 +17,6 @@ axios.get(url).then((response) => {
       if (!categoryList.includes(article.section)) {
          categoryList.push(article.section);
       }
-      console.log(article.subsection);
    });
    
    // create a category card element and toggle button for each category in categoryArray

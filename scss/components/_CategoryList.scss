@@ -7,9 +7,9 @@
     padding: 0 $base-padding;
     
     &__heading{
-        font-family: rift-soft, sans-serif;
         font-size: $base-font-size;
         font-weight: $font-weight-bold;
+        text-transform: uppercase;
     }
 
     &:last-child {

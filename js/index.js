@@ -1,4 +1,5 @@
-const main = document.querySelector('main');
+const url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
+const main = document.querySelector("main");
 // localStorage Array contains selected categories
 const categoryList = JSON.parse(localStorage.getItem("selectedCategories"));
 // svg badge
@@ -16,40 +17,85 @@ const badge = `
         </g>
       </g>
     </svg> 
-  `;
+    `;
+
 // loops thrue categoryList Array and create component for each value
-categoryList.forEach(element => {
-    console.log(element);
-    const categoryItem = element.category;
+categoryList.forEach((obj) => {
+   console.log(obj);
+   const categoryItem = obj.category;
 
-    const section = document.createElement('section');
-    section.classList.add('SelectedCategoryList');
-    main.appendChild(section)
+   // creates selected categories components
+   const section = document.createElement("section");
+   section.classList.add("SelectedCategoryList");
+   main.appendChild(section);
 
-    const div = document.createElement('div');
-    div.innerHTML = badge;
-    div.classList.add('SelectedCategoryList__div');
-    section.appendChild(div);
+   const div = document.createElement("div");
+   div.classList.add("SelectedCategoryList__category");
+   section.appendChild(div);
 
-    const h2 = document.createElement('h2');
-    h2.textContent = categoryItem;
-    h2.classList.add('SelectedCategoryList__heading');
-    section.appendChild(h2);
+   const divBadge = document.createElement("div");
+   divBadge.innerHTML = badge;
+   divBadge.classList.add("SelectedCategoryList__badge-bg");
+   div.appendChild(divBadge);
 
-    const button = document.createElement('button');
-    button.classList.add('SelectedCategoryList__button');
-    section.appendChild(button);
+   const h2 = document.createElement("h2");
+   h2.textContent = categoryItem;
+   h2.classList.add("SelectedCategoryList__heading");
+   div.appendChild(h2);
 
-    const arrowIcon = document.createElement('i');
-    arrowIcon.classList.add('fas', 'fa-chevron-right', 'SelectedCategoryList__i');
-    button.appendChild(arrowIcon);
+   const button = document.createElement("button");
+   button.classList.add("SelectedCategoryList__button");
+   div.appendChild(button);
+
+   const arrowIcon = document.createElement("i");
+   arrowIcon.classList.add("fas", "fa-chevron-right", "SelectedCategoryList__i");
+   button.appendChild(arrowIcon);
+
+   axios.get(url).then((response) => {
+      const article = response.data.results;
+
+      article.forEach((obj) => {
+        const title = obj.title;
+        const sectionx = obj.section;
+        // console.log(title);
+        
+        if(h2.textContent === 'sports') {
+          console.log('det virker');
+
+          if (obj.section === "sports") {
+            console.log(obj.title);
+            
+            // creates categories article components
+            const sectionArticle = document.createElement("section");
+            sectionArticle.classList.add("SelectedCategoryList__article");
+            section.appendChild(sectionArticle);
+            
+            const img = document.createElement("img");
+            img.src = "./assets/category-logo.png";
+            sectionArticle.appendChild(img);
+            
+            const divArticle = document.createElement("div");
+            sectionArticle.appendChild(divArticle);
+            
+            const h2Article = document.createElement("h2");
+            h2Article.textContent = title;
+            divArticle.appendChild(h2Article);
+            
+            const article = document.createElement("article");
+            article.textContent =
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit Lorem ipsum dolor sit amet consectetur, adipisicing elit.";
+            divArticle.appendChild(article);
+          }
+        }
+      });
+   });
 });
 
 // rotate arrow icon when toggled
-document.querySelector('main').addEventListener('click', (e) => {
-    const target = e.target;
+document.querySelector("main").addEventListener("click", (e) => {
+   const target = e.target;
 
-    if(target.classList.contains('SelectedCategoryList__i')) {
-      target.classList.toggle('rotate');
-    }
+   if (target.classList.contains("SelectedCategoryList__i")) {
+      target.classList.toggle("rotate");
+   }
 });
