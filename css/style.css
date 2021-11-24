@@ -1474,8 +1474,17 @@ h1 {
   font-weight: 700;
   margin-left: 15px;
 }
-.SelectedCategoryList__i {
+.SelectedCategoryList__button {
   margin-right: 1rem;
+  border: none;
+  transition: 0.4s;
+}
+.SelectedCategoryList__i {
+  transition: 0.4s;
+}
+.SelectedCategoryList .rotate {
+  transition: 0.4s;
+  transform: rotate(90deg);
 }
 
 .ToggleButton {

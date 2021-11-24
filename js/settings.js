@@ -14,6 +14,7 @@ axios.get(url).then((response) => {
       if (!categoryList.includes(article.section)) {
          categoryList.push(article.section);
       }
+      console.log(article.subsection);
    });
    
    // create a category card element and toggle button for each category in categoryArray

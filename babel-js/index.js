@@ -19,7 +19,18 @@ categoryList.forEach(function (element) {
   h2.textContent = categoryItem;
   h2.classList.add('SelectedCategoryList__heading');
   section.appendChild(h2);
+  var button = document.createElement('button');
+  button.classList.add('SelectedCategoryList__button');
+  section.appendChild(button);
   var arrowIcon = document.createElement('i');
   arrowIcon.classList.add('fas', 'fa-chevron-right', 'SelectedCategoryList__i');
-  section.appendChild(arrowIcon);
+  button.appendChild(arrowIcon);
+});
+document.querySelector('main').addEventListener('click', function (e) {
+  var target = e.target;
+  console.log(target);
+
+  if (target.classList.contains('SelectedCategoryList__i')) {
+    target.classList.toggle('rotate');
+  }
 });

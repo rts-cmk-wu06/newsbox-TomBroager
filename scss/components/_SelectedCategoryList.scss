@@ -23,8 +23,20 @@
         margin-left: 15px;
     }
 
-    &__i {
+    &__button {
         margin-right: 1rem;
+        border: none;
+        transition: 0.4s;
+
+    }
+    
+    &__i{
+        transition: 0.4s;
+    }
+    
+    .rotate {
+        transition: 0.4s;
+        transform:rotate(90deg);
     }
 
     // &:last-child {

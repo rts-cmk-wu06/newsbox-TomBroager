@@ -1,7 +1,7 @@
-// array contains selected categories
-const categoryList = JSON.parse(localStorage.getItem("selectedCategories"));
 const main = document.querySelector('main');
-// const section = document.querySelector('.sectionCategory');
+// localStorage Array contains selected categories
+const categoryList = JSON.parse(localStorage.getItem("selectedCategories"));
+// svg badge
 const badge = `
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.914" height="18.914" viewBox="0 0 18.914 18.914">
       <defs>
@@ -17,7 +17,7 @@ const badge = `
       </g>
     </svg> 
   `;
-
+// loops thrue categoryList Array and create component for each value
 categoryList.forEach(element => {
     console.log(element);
     const categoryItem = element.category;
@@ -36,7 +36,20 @@ categoryList.forEach(element => {
     h2.classList.add('SelectedCategoryList__heading');
     section.appendChild(h2);
 
+    const button = document.createElement('button');
+    button.classList.add('SelectedCategoryList__button');
+    section.appendChild(button);
+
     const arrowIcon = document.createElement('i');
     arrowIcon.classList.add('fas', 'fa-chevron-right', 'SelectedCategoryList__i');
-    section.appendChild(arrowIcon);
+    button.appendChild(arrowIcon);
+});
+
+// rotate arrow icon when toggled
+document.querySelector('main').addEventListener('click', (e) => {
+    const target = e.target;
+
+    if(target.classList.contains('SelectedCategoryList__i')) {
+      target.classList.toggle('rotate');
+    }
 });
