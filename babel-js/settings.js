@@ -44,20 +44,18 @@ section.addEventListener("click", function (e) {
   if (target.classList.contains("ToggleButton__circle")) {
     target.classList.toggle("ToggleButton__circle_active"); // måske kun en class?????????
 
-    targetParent.classList.toggle("ToggleButton_active"); // object with category name and togglemode enable(true)/disable(false)
+    targetParent.classList.toggle("ToggleButton_active"); // object with category name and togglemode enable: true or false
 
     var catObject = {
       category: targetCat.textContent,
       enable: target.toggleAttribute('enable')
-    }; // selectedCategory = selectedCategory.filter((item) => catObject.category !== item.category);
+    }; // if category name not allready exist in Array then add it - else remove category name from Array
 
-    selectedCategory = selectedCategory.filter(function (category) {
-      // category is the value of selectedCategory Array = {category: 'sport', enable: true}
-      return catObject.category !== category.category; // returned in filtered Array
-    });
+    selectedCategory = selectedCategory.filter(function (obj) {
+      return catObject.category !== obj.category;
+    }); // if enable = true push target object to Array
 
     if (catObject.enable === true) {
-      // push selected category to selectedCategory Array
       selectedCategory.push(catObject);
       console.log('pushed', catObject);
     }
