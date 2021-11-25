@@ -53,7 +53,12 @@
 
     .display-block {
         display: block;
-        transition: height 2s;    }
+    }
+
+    .SelectedCategoryList__article-link {
+        text-decoration: none;
+        color: $typo-color-one;
+    }
 
     .SelectedCategoryList__article {
         flex-basis: 100%;

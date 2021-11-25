@@ -46,6 +46,7 @@ sectionList.forEach(function (obj) {
         var link = document.createElement('a');
         link.setAttribute('href', '#');
         link.setAttribute('target', '_blank');
+        link.classList.add('SelectedCategoryList__article-link');
         articleContainer.appendChild(link);
         var sectionArticle = document.createElement("section");
         sectionArticle.classList.add("SelectedCategoryList__article");

@@ -1499,7 +1499,10 @@ h1 {
 }
 .SelectedCategoryList .display-block {
   display: block;
-  transition: height 2s;
+}
+.SelectedCategoryList .SelectedCategoryList__article-link {
+  text-decoration: none;
+  color: #1b1c20;
 }
 .SelectedCategoryList .SelectedCategoryList__article {
   flex-basis: 100%;

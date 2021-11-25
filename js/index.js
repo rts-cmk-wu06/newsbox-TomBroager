@@ -70,6 +70,7 @@ sectionList.forEach((obj) => {
             const link = document.createElement('a');
             link.setAttribute('href', '#');
             link.setAttribute('target', '_blank');
+            link.classList.add('SelectedCategoryList__article-link');
             articleContainer.appendChild(link);
 
             const sectionArticle = document.createElement("section");
