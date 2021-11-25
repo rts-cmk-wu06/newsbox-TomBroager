@@ -1,7 +1,9 @@
 const url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 const main = document.querySelector("main");
-// localStorage Array contains selected categories
-const categoryList = JSON.parse(localStorage.getItem("selectedCategories"));
+
+// localStorage Array contains selected sections/categories
+const sectionList = JSON.parse(localStorage.getItem("selectedCategories"));
+
 // svg badge
 const badge = `
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.914" height="18.914" viewBox="0 0 18.914 18.914">
@@ -19,10 +21,9 @@ const badge = `
     </svg> 
     `;
 
-// loops thrue categoryList Array and create component for each value
-categoryList.forEach((obj) => {
-   console.log(obj);
-   const categoryItem = obj.category;
+// loops thrue sectionList and create component for each value
+sectionList.forEach((obj) => {
+   const sectionName = obj.category;
 
    // creates selected categories components
    const section = document.createElement("section");
@@ -39,7 +40,7 @@ categoryList.forEach((obj) => {
    div.appendChild(divBadge);
 
    const h2 = document.createElement("h2");
-   h2.textContent = categoryItem;
+   h2.textContent = sectionName;
    h2.classList.add("SelectedCategoryList__heading");
    div.appendChild(h2);
 
@@ -52,19 +53,15 @@ categoryList.forEach((obj) => {
    button.appendChild(arrowIcon);
 
    axios.get(url).then((response) => {
-      const article = response.data.results;
-
-      article.forEach((obj) => {
-        const title = obj.title;
-        const sectionx = obj.section;
-        // console.log(title);
+      const articleArray = response.data.results;
+      // loops through Arrar
+      articleArray.forEach((obj) => {
+        const sectionItem = obj.section;
+        const titleItem = obj.title;
+        const articleItem = obj.abstract;
         
-        if(h2.textContent === 'sports') {
-          console.log('det virker');
-
-          if (obj.section === "sports") {
-            console.log(obj.title);
-            
+          // add article component to section if sectionItem = sectionName
+          if (sectionItem === sectionName) {
             // creates categories article components
             const sectionArticle = document.createElement("section");
             sectionArticle.classList.add("SelectedCategoryList__article");
@@ -78,15 +75,13 @@ categoryList.forEach((obj) => {
             sectionArticle.appendChild(divArticle);
             
             const h2Article = document.createElement("h2");
-            h2Article.textContent = title;
+            h2Article.textContent = titleItem;
             divArticle.appendChild(h2Article);
             
             const article = document.createElement("article");
-            article.textContent =
-            "Lorem ipsum dolor sit amet consectetur, adipisicing elit Lorem ipsum dolor sit amet consectetur, adipisicing elit.";
+            article.textContent = articleItem;
             divArticle.appendChild(article);
           }
-        }
       });
    });
 });
