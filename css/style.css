@@ -1495,6 +1495,7 @@ h1 {
   transform: rotate(90deg);
 }
 .SelectedCategoryList .SelectedCategoryList__article {
+  flex-basis: 100%;
   display: flex;
   gap: 15px;
   padding: 1rem;
@@ -1503,6 +1504,12 @@ h1 {
 .SelectedCategoryList .SelectedCategoryList__article h2 {
   font-size: 0.938rem;
   font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 .SelectedCategoryList .SelectedCategoryList__article article {
   font-size: 0.875154rem;

@@ -49,6 +49,7 @@
     }
     
     .SelectedCategoryList__article {
+        flex-basis: 100%;
         display: flex;
         gap: 15px;
         padding: $base-padding;
@@ -57,6 +58,11 @@
         h2 {
             font-size: $base-font-size;
             font-weight: $font-weight-bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+            -webkit-box-orient: vertical;
         }
     
         article {

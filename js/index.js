@@ -92,5 +92,5 @@ document.querySelector("main").addEventListener("click", (e) => {
 
    if (target.classList.contains("SelectedCategoryList__i")) {
       target.classList.toggle("rotate");
-   }
+    }
 });

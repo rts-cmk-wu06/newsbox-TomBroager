@@ -7,7 +7,9 @@ var categoryList = ["europa"]; // array contains fetched categories from NewYork
 var selectedCategory = []; // array contains selected/toggled categories
 
 axios.get(url).then(function (response) {
-  var article = response.data.results; // create NewYorkTimes categoryArray
+  var article = response.data.results;
+  var x = article[0];
+  console.log(x); // create NewYorkTimes categoryArray
   // loops through categoryArray and check if a category allready exists
   // if not, the category is pushed to categoryArray
 
@@ -15,8 +17,6 @@ axios.get(url).then(function (response) {
     if (!categoryList.includes(article.section)) {
       categoryList.push(article.section);
     }
-
-    console.log(article.subsection);
   }); // create a category card element and toggle button for each category in categoryArray
 
   categoryList.forEach(function (cat) {
