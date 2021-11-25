@@ -30,6 +30,9 @@ sectionList.forEach(function (obj) {
   var arrowIcon = document.createElement("i");
   arrowIcon.classList.add("fas", "fa-chevron-right", "SelectedCategoryList__i");
   button.appendChild(arrowIcon);
+  var articleContainer = document.createElement('div');
+  articleContainer.classList.add('SelectedCategoryList__article-container');
+  section.appendChild(articleContainer);
   axios.get(url).then(function (response) {
     var articleArray = response.data.results; // loops through Arrar
 
@@ -40,9 +43,13 @@ sectionList.forEach(function (obj) {
 
       if (sectionItem === sectionName) {
         // creates categories article components
+        var link = document.createElement('a');
+        link.setAttribute('href', '#');
+        link.setAttribute('target', '_blank');
+        articleContainer.appendChild(link);
         var sectionArticle = document.createElement("section");
         sectionArticle.classList.add("SelectedCategoryList__article");
-        section.appendChild(sectionArticle);
+        link.appendChild(sectionArticle);
         var img = document.createElement("img");
         img.src = "./assets/category-logo.png";
         sectionArticle.appendChild(img);
@@ -61,6 +68,12 @@ sectionList.forEach(function (obj) {
 
 document.querySelector("main").addEventListener("click", function (e) {
   var target = e.target;
+  x = target.parentElement;
+  xx = x.parentElement;
+  xxx = xx.parentElement;
+  xxxx = xxx.lastChild;
+  console.log(xxx.lastChild);
+  xxxx.classList.toggle('display-block');
 
   if (target.classList.contains("SelectedCategoryList__i")) {
     target.classList.toggle("rotate");

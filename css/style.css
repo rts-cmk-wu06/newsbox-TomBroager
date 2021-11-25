@@ -1494,6 +1494,13 @@ h1 {
   transition: 0.4s;
   transform: rotate(90deg);
 }
+.SelectedCategoryList .SelectedCategoryList__article-container {
+  display: none;
+}
+.SelectedCategoryList .display-block {
+  display: block;
+  transition: height 2s;
+}
 .SelectedCategoryList .SelectedCategoryList__article {
   flex-basis: 100%;
   display: flex;

@@ -52,6 +52,10 @@ sectionList.forEach((obj) => {
    arrowIcon.classList.add("fas", "fa-chevron-right", "SelectedCategoryList__i");
    button.appendChild(arrowIcon);
 
+   const articleContainer = document.createElement('div');
+   articleContainer.classList.add('SelectedCategoryList__article-container');
+   section.appendChild(articleContainer);
+
    axios.get(url).then((response) => {
       const articleArray = response.data.results;
       // loops through Arrar
@@ -63,9 +67,14 @@ sectionList.forEach((obj) => {
           // add article component to section if sectionItem = sectionName
           if (sectionItem === sectionName) {
             // creates categories article components
+            const link = document.createElement('a');
+            link.setAttribute('href', '#');
+            link.setAttribute('target', '_blank');
+            articleContainer.appendChild(link);
+
             const sectionArticle = document.createElement("section");
             sectionArticle.classList.add("SelectedCategoryList__article");
-            section.appendChild(sectionArticle);
+            link.appendChild(sectionArticle);
             
             const img = document.createElement("img");
             img.src = "./assets/category-logo.png";
@@ -89,6 +98,13 @@ sectionList.forEach((obj) => {
 // rotate arrow icon when toggled
 document.querySelector("main").addEventListener("click", (e) => {
    const target = e.target;
+
+   x = target.parentElement;
+   xx = x.parentElement;
+   xxx = xx.parentElement;
+   xxxx = xxx.lastChild;
+   console.log(xxx.lastChild);
+   xxxx.classList.toggle('display-block');
 
    if (target.classList.contains("SelectedCategoryList__i")) {
       target.classList.toggle("rotate");
