@@ -1,11 +1,9 @@
 // variables & functions
 @import 'variables';
+@import 'color-className';
 
 // base & layout
 @import 'base';
-
-// colors
-@import 'color-className';
 
 // components (button, card nacbar)
 @import 'components/CategoryList';
