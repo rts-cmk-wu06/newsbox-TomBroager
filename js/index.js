@@ -60,16 +60,18 @@ sectionList.forEach((obj) => {
       const articleArray = response.data.results;
       // loops through Arrar
       articleArray.forEach((obj) => {
+         const imageArray = obj.multimedia;
+         const imageUrl = imageArray.map(({ url }) => url);
          const sectionItem = obj.section;
          const titleItem = obj.title;
          const articleItem = obj.abstract;
-         const url = obj.url;
+         const articleUrl = obj.url;
 
          // add article component to section if sectionItem = sectionName
          if (sectionItem === sectionName) {
             // creates categories article components
             const link = document.createElement("a");
-            link.setAttribute("href", url);
+            link.setAttribute("href", articleUrl);
             link.setAttribute("target", "_blank");
             link.classList.add("SelectedCategoryList__article-link");
             articleContainer.appendChild(link);
@@ -79,7 +81,8 @@ sectionList.forEach((obj) => {
             link.appendChild(sectionArticle);
 
             const img = document.createElement("img");
-            img.src = "./assets/category-logo.png";
+            img.classList.add("SelectedCategoryList__image");
+            img.src = imageUrl;
             sectionArticle.appendChild(img);
 
             const divArticle = document.createElement("div");
@@ -102,11 +105,11 @@ document.querySelector("main").addEventListener("click", (e) => {
    const target = e.target;
 
    if (target.classList.contains("SelectedCategoryList__i")) {
-     // rotate arrow-button when toggled
-     target.classList.toggle("rotate");
-     
-     // toggle articles expand/collapsed
-     section = target.closest("section");
-     section.querySelector('.SelectedCategoryList__article-container').classList.toggle('display-block');
+      // rotate arrow-button when toggled
+      target.classList.toggle("rotate");
+
+      // toggle articles expand/collapsed
+      section = target.closest("section");
+      section.querySelector(".SelectedCategoryList__article-container").classList.toggle("display-block");
    }
 });

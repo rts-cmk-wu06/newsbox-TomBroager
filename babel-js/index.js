@@ -30,29 +30,33 @@ sectionList.forEach(function (obj) {
   var arrowIcon = document.createElement("i");
   arrowIcon.classList.add("fas", "fa-chevron-right", "SelectedCategoryList__i");
   button.appendChild(arrowIcon);
-  var articleContainer = document.createElement('div');
-  articleContainer.classList.add('SelectedCategoryList__article-container');
+  var articleContainer = document.createElement("div");
+  articleContainer.classList.add("SelectedCategoryList__article-container");
   section.appendChild(articleContainer);
   axios.get(url).then(function (response) {
     var articleArray = response.data.results; // loops through Arrar
 
     articleArray.forEach(function (obj) {
+      var image = obj.multimedia[0].url;
       var sectionItem = obj.section;
       var titleItem = obj.title;
-      var articleItem = obj["abstract"]; // add article component to section if sectionItem = sectionName
+      var articleItem = obj["abstract"];
+      var url = obj.url;
+      console.log(image); // add article component to section if sectionItem = sectionName
 
       if (sectionItem === sectionName) {
         // creates categories article components
-        var link = document.createElement('a');
-        link.setAttribute('href', '#');
-        link.setAttribute('target', '_blank');
-        link.classList.add('SelectedCategoryList__article-link');
+        var link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("target", "_blank");
+        link.classList.add("SelectedCategoryList__article-link");
         articleContainer.appendChild(link);
         var sectionArticle = document.createElement("section");
         sectionArticle.classList.add("SelectedCategoryList__article");
         link.appendChild(sectionArticle);
         var img = document.createElement("img");
-        img.src = "./assets/category-logo.png";
+        img.classList.add('SelectedCategoryList__image');
+        img.src = image;
         sectionArticle.appendChild(img);
         var divArticle = document.createElement("div");
         sectionArticle.appendChild(divArticle);
@@ -65,18 +69,16 @@ sectionList.forEach(function (obj) {
       }
     });
   });
-}); // rotate arrow icon when toggled
+}); // rotate arrow-button and display articles expand/collapsed when toggled
 
 document.querySelector("main").addEventListener("click", function (e) {
   var target = e.target;
-  x = target.parentElement;
-  xx = x.parentElement;
-  xxx = xx.parentElement;
-  xxxx = xxx.lastChild;
-  console.log(xxx.lastChild);
-  xxxx.classList.toggle('display-block');
 
   if (target.classList.contains("SelectedCategoryList__i")) {
-    target.classList.toggle("rotate");
+    // rotate arrow-button when toggled
+    target.classList.toggle("rotate"); // toggle articles expand/collapsed
+
+    section = target.closest("section");
+    section.querySelector('.SelectedCategoryList__article-container').classList.toggle('display-block');
   }
 });

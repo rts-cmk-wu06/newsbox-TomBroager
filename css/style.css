@@ -11,6 +11,9 @@
 .dark-mode header {
   background-color: #1b1c20;
 }
+.dark-mode main {
+  background-color: #324755;
+}
 .dark-mode .section {
   background-color: #6e8ca0;
 }
@@ -25,6 +28,9 @@
 }
 .dark-mode form i {
   color: #324755;
+}
+.dark-mode article {
+  color: #ffffff;
 }
 
 body {
@@ -1484,6 +1490,7 @@ h1 {
 .SelectedCategoryList__button {
   border: none;
   transition: 0.4s;
+  background-color: transparent;
 }
 .SelectedCategoryList__i {
   transition: 0.4s;
@@ -1497,6 +1504,13 @@ h1 {
 }
 .SelectedCategoryList .display-block {
   display: block;
+}
+.SelectedCategoryList .SelectedCategoryList__image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  align-self: center;
 }
 .SelectedCategoryList .SelectedCategoryList__article-link {
   text-decoration: none;
@@ -1578,7 +1592,7 @@ h1 {
   flex: 1;
   border: none;
   border-radius: 5px;
-  background-color: #f0f3f4;
+  background-color: white;
   padding: 13px 10px;
 }
 .SearchBar__i {

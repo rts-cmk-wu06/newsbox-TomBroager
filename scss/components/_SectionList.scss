@@ -35,6 +35,7 @@
     &__button {
         border: none;
         transition: 0.4s;
+        background-color: transparent;
     }
     
     &__i{
@@ -51,6 +52,14 @@
 
     .display-block {
         display: block;
+    }
+
+    .SelectedCategoryList__image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        align-self: center;
     }
 
     .SelectedCategoryList__article-link {
