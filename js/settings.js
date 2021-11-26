@@ -7,9 +7,6 @@ let selectedCategory = [];  // array contains selected/toggled categories
 axios.get(url).then((response) => {
    const article = response.data.results;
 
-   let x = article[0];
-   console.log(x);
-   
    // create NewYorkTimes categoryArray
    // loops through categoryArray and check if a category allready exists
    // if not, the category is pushed to categoryArray
