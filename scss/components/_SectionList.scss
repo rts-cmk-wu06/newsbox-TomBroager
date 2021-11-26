@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     align-items: center;
     border-bottom: $base-border-width solid $secondary-one;
-    border: 2px solid green;
 
     &__category {
         flex: 1;
@@ -13,7 +12,6 @@
         align-items: center;
         gap: 15px;
         padding: 0 $base-padding;
-        border: 2px solid blue;
     }
 
     &__badge-bg {
@@ -65,7 +63,6 @@
         display: flex;
         gap: 15px;
         padding: $base-padding;
-        border: 2px solid red;
     
         h2 {
             font-size: $base-font-size;

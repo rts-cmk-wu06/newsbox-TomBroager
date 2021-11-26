@@ -1456,7 +1456,6 @@ h1 {
   flex-wrap: wrap;
   align-items: center;
   border-bottom: 1px solid #f0f3f4;
-  border: 2px solid green;
 }
 .SelectedCategoryList__category {
   flex: 1;
@@ -1465,7 +1464,6 @@ h1 {
   align-items: center;
   gap: 15px;
   padding: 0 1rem;
-  border: 2px solid blue;
 }
 .SelectedCategoryList__badge-bg {
   width: 30px;
@@ -1509,7 +1507,6 @@ h1 {
   display: flex;
   gap: 15px;
   padding: 1rem;
-  border: 2px solid red;
 }
 .SelectedCategoryList .SelectedCategoryList__article h2 {
   font-size: 0.938rem;
