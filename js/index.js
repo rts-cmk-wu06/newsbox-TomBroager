@@ -52,62 +52,60 @@ sectionList.forEach((obj) => {
    arrowIcon.classList.add("fas", "fa-chevron-right", "SelectedCategoryList__i");
    button.appendChild(arrowIcon);
 
-   const articleContainer = document.createElement('div');
-   articleContainer.classList.add('SelectedCategoryList__article-container');
+   const articleContainer = document.createElement("div");
+   articleContainer.classList.add("SelectedCategoryList__article-container");
    section.appendChild(articleContainer);
 
    axios.get(url).then((response) => {
       const articleArray = response.data.results;
       // loops through Arrar
       articleArray.forEach((obj) => {
-        const sectionItem = obj.section;
-        const titleItem = obj.title;
-        const articleItem = obj.abstract;
-        
-          // add article component to section if sectionItem = sectionName
-          if (sectionItem === sectionName) {
+         const sectionItem = obj.section;
+         const titleItem = obj.title;
+         const articleItem = obj.abstract;
+
+         // add article component to section if sectionItem = sectionName
+         if (sectionItem === sectionName) {
             // creates categories article components
-            const link = document.createElement('a');
-            link.setAttribute('href', '#');
-            link.setAttribute('target', '_blank');
-            link.classList.add('SelectedCategoryList__article-link');
+            const link = document.createElement("a");
+            link.setAttribute("href", "#");
+            link.setAttribute("target", "_blank");
+            link.classList.add("SelectedCategoryList__article-link");
             articleContainer.appendChild(link);
 
             const sectionArticle = document.createElement("section");
             sectionArticle.classList.add("SelectedCategoryList__article");
             link.appendChild(sectionArticle);
-            
+
             const img = document.createElement("img");
             img.src = "./assets/category-logo.png";
             sectionArticle.appendChild(img);
-            
+
             const divArticle = document.createElement("div");
             sectionArticle.appendChild(divArticle);
-            
+
             const h2Article = document.createElement("h2");
             h2Article.textContent = titleItem;
             divArticle.appendChild(h2Article);
-            
+
             const article = document.createElement("article");
             article.textContent = articleItem;
             divArticle.appendChild(article);
-          }
+         }
       });
    });
 });
 
-// rotate arrow icon when toggled
+// rotate arrow-button and display articles on/off when toggled
 document.querySelector("main").addEventListener("click", (e) => {
    const target = e.target;
 
-   x = target.parentElement;
-   xx = x.parentElement;
-   xxx = xx.parentElement;
-   xxxx = xxx.lastChild;
-   console.log(xxx.lastChild);
-   xxxx.classList.toggle('display-block');
-
+   // toggle articles on/off
+   section = target.closest("section");
+   section.querySelector('.SelectedCategoryList__article-container').classList.toggle('display-block');
+   
+   // rotate arrow-button when toggled
    if (target.classList.contains("SelectedCategoryList__i")) {
       target.classList.toggle("rotate");
-    }
+   }
 });
