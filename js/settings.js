@@ -42,19 +42,19 @@ axios.get(url).then((response) => {
    });
 });
 
-// toggle class on/off - for CSS for switch to move
+// toggle section button on/off
 section.addEventListener("click", (e) => {
    
    const target = e.target;
    const targetParent = target.parentElement;
    const targetCat = targetParent.parentElement;
    
-   // if target contains className x then toggle/add on className y - if not toggle/remove className y off
+   // if target contains className x then toggle/add on className y - if not toggled remove className y
    if (target.classList.contains("ToggleButton__circle")) {
-      target.classList.toggle("ToggleButton__circle_active");  // måske kun en class?????????
+      target.classList.toggle("ToggleButton__circle_active");
       targetParent.classList.toggle("ToggleButton_active");
       
-      // object with category name and togglemode enable: true or false
+      // object with categorysection name and togglemode enable: true or false
       const catObject = {
          category: targetCat.textContent,
          enable: target.toggleAttribute('enable'),
