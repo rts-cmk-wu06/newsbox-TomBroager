@@ -1,7 +1,7 @@
 const url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 const section = document.querySelector("#section");
 const categoryList = ["europa"];   // array contains fetched categories from NewYorkTimes API
-let selectedCategory = [];  // array contains selected/toggled categories
+let selectedSection = [];  // array contains selected/toggled categories
 
 
 axios.get(url).then((response) => {
@@ -61,17 +61,17 @@ section.addEventListener("click", (e) => {
       };
 
       // if category name not allready exist in Array then add it - else remove category name from Array
-      selectedCategory = selectedCategory.filter((obj) => sectionName.category !== obj.category);
+      selectedSection = selectedSection.filter((obj) => sectionName.category !== obj.category);
       
       // if enable = true push target object to Array
       if(sectionName.enable === true) {
-         selectedCategory.push(sectionName);
+         selectedSection.push(sectionName);
          console.log('pushed', sectionName);
       };
 
-      console.log('selectedCategory: ', selectedCategory);
+      console.log('selectedCategory: ', selectedSection);
 
-      localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
+      localStorage.setItem("selectedCategories", JSON.stringify(selectedSection));
       
    };
 });
