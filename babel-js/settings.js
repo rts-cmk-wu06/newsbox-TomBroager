@@ -34,20 +34,20 @@ axios.get(url).then(function (response) {
       toggleButton.appendChild(toggleButtonCircle);
     }
   });
-}); // toggle section button on/off
+}); // toggle button switch on/off and save section name to localStorage
 
 section.addEventListener("click", function (e) {
-  var target = e.target;
-  var targetParent = target.parentElement;
-  var targetCat = targetParent.parentElement; // if target contains className x then toggle/add on className y - if not toggled remove className y
+  var toggleButtonSwitch = e.target;
+  var toggleButton = toggleButtonSwitch.closest('.ToggleButton');
+  var toggleButtonSectionName = toggleButton.closest('.CategoryList').textContent; // if target contains className x then toggle/add on className y - if not toggled remove className y
 
-  if (target.classList.contains("ToggleButton__circle")) {
-    target.classList.toggle("ToggleButton__circle_active");
-    targetParent.classList.toggle("ToggleButton_active"); // object with categorysection name and togglemode enable: true or false
+  if (toggleButtonSwitch.classList.contains("ToggleButton__circle")) {
+    toggleButtonSwitch.classList.toggle("ToggleButton__circle_active");
+    toggleButton.classList.toggle("ToggleButton_active"); // object with categorysection name and togglemode enable: true or false
 
     var catObject = {
-      category: targetCat.textContent,
-      enable: target.toggleAttribute('enable')
+      category: toggleButtonSectionName,
+      enable: toggleButtonSwitch.toggleAttribute('enable')
     }; // if category name not allready exist in Array then add it - else remove category name from Array
 
     selectedCategory = selectedCategory.filter(function (obj) {
