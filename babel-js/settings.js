@@ -6,6 +6,10 @@ var categoryList = ["europa"]; // array contains fetched categories from NewYork
 
 var selectedCategory = []; // array contains selected/toggled categories
 
+if (localStorage.getItem('selectedCategory')) {
+  selectedCategory = JSON.parse(localStorage.getItem('selectedCategory'));
+}
+
 axios.get(url).then(function (response) {
   var article = response.data.results; // create NewYorkTimes categoryArray
   // loops through categoryArray and check if a category allready exists
@@ -43,25 +47,20 @@ section.addEventListener("click", function (e) {
 
   if (toggleButtonSwitch.classList.contains("ToggleButton__circle")) {
     toggleButtonSwitch.classList.toggle("ToggleButton__circle_active");
-    toggleButton.classList.toggle("ToggleButton_active"); // object with categorysection name and togglemode enable: true or false
-
-    var catObject = {
-      category: toggleButtonSectionName,
-      enable: toggleButtonSwitch.toggleAttribute('enable')
-    }; // if category name not allready exist in Array then add it - else remove category name from Array
-
+    toggleButton.classList.toggle("ToggleButton_active");
+    var sectionName = toggleButtonSectionName;
+    console.log(selectedCategory = selectedCategory.filter(function (obj) {
+      return obj !== sectionName;
+    }));
     selectedCategory = selectedCategory.filter(function (obj) {
-      return catObject.category !== obj.category;
-    }); // if enable = true push target object to Array
+      return obj !== sectionName;
+    });
+    selectedCategory.push(sectionName); // selectedCategory = selectedCategory.filter((obj) => sectionName !== obj);
 
-    if (catObject.enable === true) {
-      selectedCategory.push(catObject);
-      console.log('pushed', catObject);
-    }
+    localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory)); // if category name not allready exist in Array then add it - else remove category name from Array
+    // selectedCategory = selectedCategory.filter((obj) => catObject.category !== obj.category);
 
-    ;
     console.log('selectedCategory: ', selectedCategory);
-    localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory));
   }
 
   ;
