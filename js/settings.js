@@ -42,17 +42,17 @@ axios.get(url).then((response) => {
    });
 });
 
-// toggle button switch on/off
+// toggle button switch on/off and save section name to localStorage
 section.addEventListener("click", (e) => {
    
    const toggleButtonSwitch = e.target;
-   const toggleButtonBackground = toggleButtonSwitch.closest('.ToggleButton');
-   const toggleButtonSectionName = toggleButtonBackground.closest('.CategoryList').textContent;
+   const toggleButton = toggleButtonSwitch.closest('.ToggleButton');
+   const toggleButtonSectionName = toggleButton.closest('.CategoryList').textContent;
 
    // if target contains className x then toggle/add on className y - if not toggled remove className y
    if (toggleButtonSwitch.classList.contains("ToggleButton__circle")) {
       toggleButtonSwitch.classList.toggle("ToggleButton__circle_active");
-      toggleButtonBackground.classList.toggle("ToggleButton_active");
+      toggleButton.classList.toggle("ToggleButton_active");
       
       // object with categorysection name and togglemode enable: true or false
       const catObject = {
