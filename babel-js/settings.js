@@ -34,17 +34,16 @@ axios.get(url).then(function (response) {
       toggleButton.appendChild(toggleButtonCircle);
     }
   });
-}); // toggle class on/off - for CSS for switch to move
+}); // toggle section button on/off
 
 section.addEventListener("click", function (e) {
   var target = e.target;
   var targetParent = target.parentElement;
-  var targetCat = targetParent.parentElement; // if target contains className x then toggle/add on className y - if not toggle/remove className y off
+  var targetCat = targetParent.parentElement; // if target contains className x then toggle/add on className y - if not toggled remove className y
 
   if (target.classList.contains("ToggleButton__circle")) {
-    target.classList.toggle("ToggleButton__circle_active"); // måske kun en class?????????
-
-    targetParent.classList.toggle("ToggleButton_active"); // object with category name and togglemode enable: true or false
+    target.classList.toggle("ToggleButton__circle_active");
+    targetParent.classList.toggle("ToggleButton_active"); // object with categorysection name and togglemode enable: true or false
 
     var catObject = {
       category: targetCat.textContent,
