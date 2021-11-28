@@ -56,12 +56,12 @@ section.addEventListener("click", (e) => {
       
       // object with categorysection name and togglemode enable: true or false
       const sectionName = {
-         category: toggleButtonSectionName,
+         section: toggleButtonSectionName,
          enable: toggleButtonSwitch.toggleAttribute('enable'),
       };
 
       // if category name not allready exist in Array then add it - else remove category name from Array
-      selectedSection = selectedSection.filter((obj) => sectionName.category !== obj.category);
+      selectedSection = selectedSection.filter((obj) => sectionName.section !== obj.section);
       
       // if enable = true push target object to Array
       if(sectionName.enable === true) {
