@@ -42,22 +42,22 @@ axios.get(url).then((response) => {
    });
 });
 
-// toggle section button on/off
+// toggle button switch on/off
 section.addEventListener("click", (e) => {
    
-   const target = e.target;
-   const targetParent = target.parentElement;
-   const targetCat = targetParent.parentElement;
-   
+   const toggleButtonSwitch = e.target;
+   const toggleButtonBackground = toggleButtonSwitch.closest('.ToggleButton');
+   const toggleButtonSectionName = toggleButtonBackground.closest('.CategoryList').textContent;
+
    // if target contains className x then toggle/add on className y - if not toggled remove className y
-   if (target.classList.contains("ToggleButton__circle")) {
-      target.classList.toggle("ToggleButton__circle_active");
-      targetParent.classList.toggle("ToggleButton_active");
+   if (toggleButtonSwitch.classList.contains("ToggleButton__circle")) {
+      toggleButtonSwitch.classList.toggle("ToggleButton__circle_active");
+      toggleButtonBackground.classList.toggle("ToggleButton_active");
       
       // object with categorysection name and togglemode enable: true or false
       const catObject = {
-         category: targetCat.textContent,
-         enable: target.toggleAttribute('enable'),
+         category: toggleButtonSectionName,
+         enable: toggleButtonSwitch.toggleAttribute('enable'),
       };
 
       // if category name not allready exist in Array then add it - else remove category name from Array
