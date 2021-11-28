@@ -63,7 +63,8 @@ section.addEventListener("click", (e) => {
       // if section name not exist in selectedSection Array then add it
       selectedSection = selectedSection.filter((obj) => sectionName.section !== obj.section);
       
-      // if enable = true push target object to Array
+      // Toggle true = add object to selectedSection Array
+      // Toggle false = "remove" object from selectedSection Array
       if(sectionName.enable === true) {
          selectedSection.push(sectionName);
          console.log('pushed', sectionName);
