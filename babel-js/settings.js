@@ -4,11 +4,7 @@ var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9u
 var section = document.querySelector("#section");
 var categoryList = ["europa"]; // array contains fetched categories from NewYorkTimes API
 
-var selectedCategory = []; // array contains selected/toggled categories
-
-if (localStorage.getItem('selectedCategory')) {
-  selectedCategory = JSON.parse(localStorage.getItem('selectedCategory'));
-}
+var selectedSection = []; // array contains selected/toggled categories
 
 axios.get(url).then(function (response) {
   var article = response.data.results; // create NewYorkTimes categoryArray
@@ -21,14 +17,14 @@ axios.get(url).then(function (response) {
     }
   }); // create a category card element and toggle button for each category in categoryArray
 
-  categoryList.forEach(function (cat) {
-    if (cat === 'well' || cat === 'sports' || cat === 'business' || cat === 'arts') {
+  categoryList.forEach(function (item) {
+    if (item === 'europa' || item === 'well' || item === 'sports' || item === 'business' || item === 'arts') {
       var wrapper = document.createElement("div");
       wrapper.classList.add("CategoryList", "display-f", "align-items-c");
       section.appendChild(wrapper);
       var heading = document.createElement("h2");
       heading.classList.add('CategoryList__heading');
-      heading.textContent = cat;
+      heading.textContent = item;
       wrapper.appendChild(heading);
       var toggleButton = document.createElement("button");
       toggleButton.classList.add("ToggleButton");
@@ -38,29 +34,29 @@ axios.get(url).then(function (response) {
       toggleButton.appendChild(toggleButtonCircle);
     }
   });
-}); // toggle button switch on/off and save section name to localStorage
+}); // toggle Section button switch on/off and save section name to selectedSection Array
 
 section.addEventListener("click", function (e) {
   var toggleButtonSwitch = e.target;
   var toggleButton = toggleButtonSwitch.closest('.ToggleButton');
-  var toggleButtonSectionName = toggleButton.closest('.CategoryList').textContent; // if target contains className x then toggle/add on className y - if not toggled remove className y
+  var toggleButtonSectionName = toggleButton.closest('.CategoryList').textContent; // if target contains className ToggleButton__circle - toggle on/off classes
 
   if (toggleButtonSwitch.classList.contains("ToggleButton__circle")) {
     toggleButtonSwitch.classList.toggle("ToggleButton__circle_active");
-    toggleButton.classList.toggle("ToggleButton_active");
-    var sectionName = toggleButtonSectionName;
-    console.log(selectedCategory = selectedCategory.filter(function (obj) {
-      return obj !== sectionName;
-    }));
-    selectedCategory = selectedCategory.filter(function (obj) {
-      return obj !== sectionName;
-    });
-    selectedCategory.push(sectionName); // selectedCategory = selectedCategory.filter((obj) => sectionName !== obj);
+    toggleButton.classList.toggle("ToggleButton_active"); // 1: check for duplicated item
 
-    localStorage.setItem("selectedCategories", JSON.stringify(selectedCategory)); // if category name not allready exist in Array then add it - else remove category name from Array
-    // selectedCategory = selectedCategory.filter((obj) => catObject.category !== obj.category);
+    selectedSection = selectedSection.filter(function (array) {
+      return toggleButtonSectionName !== array;
+    }); // 2: if togglemode is true the add toggleButtonSectionName
 
-    console.log('selectedCategory: ', selectedCategory);
+    if (toggleButtonSwitch.toggleAttribute('enable') === true) {
+      selectedSection.push(toggleButtonSectionName);
+      console.log('pushed', toggleButtonSectionName);
+    }
+
+    ;
+    console.log('selectedCategory: ', selectedSection);
+    localStorage.setItem("selectedCategories", JSON.stringify(selectedSection));
   }
 
   ;

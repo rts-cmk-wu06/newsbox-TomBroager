@@ -23,7 +23,7 @@ const badge = `
 
 // loops thrue sectionList and create component for each value
 sectionList.forEach((obj) => {
-   const sectionName = obj.category;
+   const sectionName = obj;
 
    // creates selected categories components
    const section = document.createElement("section");
