@@ -40,7 +40,7 @@ main.addEventListener("click", (e) => {
     const target = e.target;
     console.log(target);
 
-    // const parentElement = target.closest('.SelectedCategoryList__article')
+    const parentElement = target.closest('.SelectedCategoryList__article')
 
     // const sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
     // const sectionName = sectionHeading[0].textContent

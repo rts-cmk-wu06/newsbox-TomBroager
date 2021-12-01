@@ -50,7 +50,7 @@ sectionList.forEach(function (obj) {
       sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
       articleContainer.appendChild(sectionArticle);
       var archiveButton = document.createElement('div');
-      archiveButton.classList.add('SelectedCategoryList__archiveButton');
+      archiveButton.classList.add('SelectedCategoryList__deleteButton');
       sectionArticle.appendChild(archiveButton);
       var archiveIcon = document.createElement('i');
       archiveIcon.classList.add('fas', 'fa-trash');

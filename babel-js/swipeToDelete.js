@@ -34,8 +34,8 @@ main.addEventListener("touchstart", function (e) {
 
 main.addEventListener("click", function (e) {
   var target = e.target;
-  console.log(target); // const parentElement = target.closest('.SelectedCategoryList__article')
-  // const sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
+  console.log(target);
+  var parentElement = target.closest('.SelectedCategoryList__article'); // const sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
   // const sectionName = sectionHeading[0].textContent
   // console.log(sectionName);
   // const object = {
