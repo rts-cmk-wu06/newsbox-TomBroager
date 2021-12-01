@@ -35,7 +35,7 @@ main.addEventListener("touchstart", (e) => {
     });
 });
 
-// when archive button are clicked then save article data as an object and push object to archiveArray
+// when delete button is clicked then delete article object from localStorage
 main.addEventListener("click", (e) => {
     const target = e.target;
 
