@@ -69,24 +69,33 @@ sectionList.forEach((obj) => {
 
          // add article component to section if sectionItem = sectionName
          if (sectionItem === sectionName) {
-            // creates categories article components
+            // creates article components
+            const sectionArticle = document.createElement("section");
+            sectionArticle.classList.add("SelectedCategoryList__article");
+            articleContainer.appendChild(sectionArticle);
+
+            const archiveButton = document.createElement('div');
+            archiveButton.classList.add('SelectedCategoryList__archiveButton');
+            sectionArticle.appendChild(archiveButton);
+
+            const archiveIcon = document.createElement('i');
+            archiveIcon.classList.add('fas', 'fa-inbox');
+            archiveButton.appendChild(archiveIcon);
+
             const link = document.createElement("a");
             link.setAttribute("href", articleUrl);
             link.setAttribute("target", "_blank");
             link.classList.add("SelectedCategoryList__article-link");
-            articleContainer.appendChild(link);
-
-            const sectionArticle = document.createElement("section");
-            sectionArticle.classList.add("SelectedCategoryList__article");
-            link.appendChild(sectionArticle);
+            sectionArticle.appendChild(link);
 
             const img = document.createElement("img");
             img.classList.add("SelectedCategoryList__image");
             img.src = imageUrl;
-            sectionArticle.appendChild(img);
+            link.appendChild(img);
 
             const divArticle = document.createElement("div");
-            sectionArticle.appendChild(divArticle);
+            divArticle.classList.add('SelectedCategoryList__wrapper');
+            link.appendChild(divArticle);
 
             const h2Article = document.createElement("h2");
             h2Article.textContent = titleItem;

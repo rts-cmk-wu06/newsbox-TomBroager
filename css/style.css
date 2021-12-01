@@ -1463,7 +1463,7 @@ h1 {
   border-bottom: 1px solid #f0f3f4;
 }
 .SelectedCategoryList__category {
-  flex: 1;
+  flex-basis: 100%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -1504,22 +1504,36 @@ h1 {
 .SelectedCategoryList .display-block {
   display: block;
 }
-.SelectedCategoryList .SelectedCategoryList__image {
+.SelectedCategoryList .SelectedCategoryList__article {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+}
+.SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__archiveButton {
+  grid-area: 1/2/2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+.SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__archiveButton i {
+  color: white;
+  font-size: 1.5008rem;
+}
+.SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__article-link {
+  grid-area: 1/1/2/3;
+  display: flex;
+  gap: 15px;
+  text-decoration: none;
+  color: #1b1c20;
+  padding: 1rem;
+  background-color: white;
+}
+.SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__image {
   min-width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
   align-self: center;
-}
-.SelectedCategoryList .SelectedCategoryList__article-link {
-  text-decoration: none;
-  color: #1b1c20;
-}
-.SelectedCategoryList .SelectedCategoryList__article {
-  flex-basis: 100%;
-  display: flex;
-  gap: 15px;
-  padding: 1rem;
 }
 .SelectedCategoryList .SelectedCategoryList__article h2 {
   font-size: 0.938rem;
