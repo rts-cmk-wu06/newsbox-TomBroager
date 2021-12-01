@@ -1519,6 +1519,17 @@ h1 {
   color: white;
   font-size: 1.5008rem;
 }
+.SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__deleteButton {
+  grid-area: 1/2/2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+.SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__deleteButton i {
+  color: white;
+  font-size: 1.5008rem;
+}
 .SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__article-link {
   grid-area: 1/1/2/3;
   display: flex;

@@ -53,7 +53,7 @@ sectionList.forEach(function (obj) {
       archiveButton.classList.add('SelectedCategoryList__archiveButton');
       sectionArticle.appendChild(archiveButton);
       var archiveIcon = document.createElement('i');
-      archiveIcon.classList.add('fas', 'fa-inbox');
+      archiveIcon.classList.add('fas', 'fa-trash');
       archiveButton.appendChild(archiveIcon);
       var link = document.createElement("a");
       link.setAttribute("href", articleUrl);

@@ -40,28 +40,28 @@ main.addEventListener("click", (e) => {
     const target = e.target;
     console.log(target);
 
-    const parentElement = target.closest('.SelectedCategoryList__article')
+    // const parentElement = target.closest('.SelectedCategoryList__article')
 
-    const sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
-    const sectionName = sectionHeading[0].textContent
-    console.log(sectionName);
+    // const sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
+    // const sectionName = sectionHeading[0].textContent
+    // console.log(sectionName);
     
-    const object = {
-        section: sectionName,
-        url: parentElement.querySelector(".SelectedCategoryList__article-link").href,
-        image: parentElement.querySelector("img").src,
-        title: parentElement.querySelector("h2").textContent,
-        abstract: parentElement.querySelector("article").textContent,
-    };
+    // const object = {
+    //     section: sectionName,
+    //     url: parentElement.querySelector(".SelectedCategoryList__article-link").href,
+    //     image: parentElement.querySelector("img").src,
+    //     title: parentElement.querySelector("h2").textContent,
+    //     abstract: parentElement.querySelector("article").textContent,
+    // };
 
-    console.log(object);
+    // console.log(object);
     
-    archiveArray.push(object);
+    // archiveArray.push(object);
     
-    localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
+    // localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
     
-    console.log(object);
-    console.log("archiveArray: ", archiveArray);
+    // console.log(object);
+    // console.log("archiveArray: ", archiveArray);
     
     parentElement.classList.add('animate__zoomOutUp');
     

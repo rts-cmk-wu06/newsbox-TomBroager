@@ -6,8 +6,7 @@ var touchCoordinateStart;
 var touchCoordinateMove;
 var touchCoordinateEnd;
 var touchElement;
-var swipeItem;
-var archiveArray = []; // touch event
+var swipeItem; // touch event
 
 main.addEventListener("touchstart", function (e) {
   touchElement = e.target; // item to swipe
@@ -35,23 +34,23 @@ main.addEventListener("touchstart", function (e) {
 
 main.addEventListener("click", function (e) {
   var target = e.target;
-  console.log(target);
-  var parentElement = target.closest('.SelectedCategoryList__article');
-  var sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
-  var sectionName = sectionHeading[0].textContent;
-  console.log(sectionName);
-  var object = {
-    section: sectionName,
-    url: parentElement.querySelector(".SelectedCategoryList__article-link").href,
-    image: parentElement.querySelector("img").src,
-    title: parentElement.querySelector("h2").textContent,
-    "abstract": parentElement.querySelector("article").textContent
-  };
-  console.log(object);
-  archiveArray.push(object);
-  localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
-  console.log(object);
-  console.log("archiveArray: ", archiveArray);
+  console.log(target); // const parentElement = target.closest('.SelectedCategoryList__article')
+  // const sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
+  // const sectionName = sectionHeading[0].textContent
+  // console.log(sectionName);
+  // const object = {
+  //     section: sectionName,
+  //     url: parentElement.querySelector(".SelectedCategoryList__article-link").href,
+  //     image: parentElement.querySelector("img").src,
+  //     title: parentElement.querySelector("h2").textContent,
+  //     abstract: parentElement.querySelector("article").textContent,
+  // };
+  // console.log(object);
+  // archiveArray.push(object);
+  // localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
+  // console.log(object);
+  // console.log("archiveArray: ", archiveArray);
+
   parentElement.classList.add('animate__zoomOutUp');
   setTimeout(function () {
     parentElement.remove();

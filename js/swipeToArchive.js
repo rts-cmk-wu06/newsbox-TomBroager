@@ -39,15 +39,15 @@ main.addEventListener("touchstart", (e) => {
 // when archive button are clicked then save article data as an object and push object to archiveArray
 main.addEventListener("click", (e) => {
     const target = e.target;
-    console.log(target);
 
+    // target element to remove on click
     const parentElement = target.closest('.SelectedCategoryList__article')
 
+    // target section name for use in articleArray
     const sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
     const sectionName = sectionHeading[0].textContent
-    console.log(sectionName);
     
-    const object = {
+    const articleObject = {
         section: sectionName,
         url: parentElement.querySelector(".SelectedCategoryList__article-link").href,
         image: parentElement.querySelector("img").src,
@@ -55,14 +55,9 @@ main.addEventListener("click", (e) => {
         abstract: parentElement.querySelector("article").textContent,
     };
 
-    console.log(object);
-    
-    archiveArray.push(object);
+    archiveArray.push(articleObject);
     
     localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
-    
-    console.log(object);
-    console.log("archiveArray: ", archiveArray);
     
     parentElement.classList.add('animate__zoomOutUp');
     

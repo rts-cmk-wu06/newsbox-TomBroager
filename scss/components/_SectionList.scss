@@ -77,6 +77,19 @@
             }
         }
         
+        .SelectedCategoryList__deleteButton {
+            grid-area: 1 / 2 / 2 / 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: red;
+            
+            i {
+                color: white;
+                font-size: $font-size-xl;
+            }
+        }
+        
         .SelectedCategoryList__article-link {
             grid-area: 1 / 1 / 2 / 3;
             display: flex;

@@ -76,11 +76,11 @@ sectionList.forEach((obj) => {
          articleContainer.appendChild(sectionArticle);
 
          const archiveButton = document.createElement('div');
-         archiveButton.classList.add('SelectedCategoryList__archiveButton');
+         archiveButton.classList.add('SelectedCategoryList__deleteButton');
          sectionArticle.appendChild(archiveButton);
 
          const archiveIcon = document.createElement('i');
-         archiveIcon.classList.add('fas', 'fa-inbox');
+         archiveIcon.classList.add('fas', 'fa-trash');
          archiveButton.appendChild(archiveIcon);
 
          const link = document.createElement("a");
