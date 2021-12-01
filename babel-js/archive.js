@@ -1,7 +1,9 @@
 "use strict";
 
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
-var main = document.querySelector("main"); // localStorage Array contains selected sections/categories
+var main = document.querySelector("main");
+var archiveArray = JSON.parse(localStorage.getItem("savedArticles"));
+console.log(archiveArray); // localStorage Array contains selected sections/categories
 
 var sectionList = JSON.parse(localStorage.getItem("selectedCategories")); // svg badge
 
@@ -33,52 +35,49 @@ sectionList.forEach(function (obj) {
   var articleContainer = document.createElement("div");
   articleContainer.classList.add("SelectedCategoryList__article-container");
   section.appendChild(articleContainer);
-  axios.get(url).then(function (response) {
-    var articleArray = response.data.results; // loops through Arrar
+  archiveArray.forEach(function (obj) {
+    var imageArray = obj.multimedia; //   const imageUrl = imageArray.map(({ url }) => url);
 
-    articleArray.forEach(function (obj) {
-      var imageArray = obj.multimedia;
-      var imageUrl = imageArray.map(function (_ref) {
-        var url = _ref.url;
-        return url;
-      });
-      var sectionItem = obj.section;
-      var titleItem = obj.title;
-      var articleItem = obj["abstract"];
-      var articleUrl = obj.url; // add article component to section if sectionItem = sectionName
+    var imageUrl = obj.image;
+    var sectionItem = obj.section;
+    var titleItem = obj.title;
+    var articleItem = obj["abstract"];
+    var articleUrl = obj.url; // add article component to section if sectionItem = sectionName
 
-      if (sectionItem === sectionName) {
-        // creates article components
-        var sectionArticle = document.createElement("section");
-        sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
-        articleContainer.appendChild(sectionArticle);
-        var archiveButton = document.createElement('div');
-        archiveButton.classList.add('SelectedCategoryList__archiveButton');
-        sectionArticle.appendChild(archiveButton);
-        var archiveIcon = document.createElement('i');
-        archiveIcon.classList.add('fas', 'fa-inbox');
-        archiveButton.appendChild(archiveIcon);
-        var link = document.createElement("a");
-        link.setAttribute("href", articleUrl);
-        link.setAttribute("target", "_blank");
-        link.classList.add("SelectedCategoryList__article-link");
-        sectionArticle.appendChild(link);
-        var img = document.createElement("img");
-        img.classList.add("SelectedCategoryList__image");
-        img.src = imageUrl;
-        link.appendChild(img);
-        var divArticle = document.createElement("div");
-        divArticle.classList.add('SelectedCategoryList__wrapper');
-        link.appendChild(divArticle);
-        var h2Article = document.createElement("h2");
-        h2Article.textContent = titleItem;
-        divArticle.appendChild(h2Article);
-        var article = document.createElement("article");
-        article.textContent = articleItem;
-        divArticle.appendChild(article);
-      }
-    });
-  });
+    if (sectionItem === sectionName) {
+      // creates article components
+      var sectionArticle = document.createElement("section");
+      sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
+      articleContainer.appendChild(sectionArticle);
+      var archiveButton = document.createElement('div');
+      archiveButton.classList.add('SelectedCategoryList__archiveButton');
+      sectionArticle.appendChild(archiveButton);
+      var archiveIcon = document.createElement('i');
+      archiveIcon.classList.add('fas', 'fa-inbox');
+      archiveButton.appendChild(archiveIcon);
+      var link = document.createElement("a");
+      link.setAttribute("href", articleUrl);
+      link.setAttribute("target", "_blank");
+      link.classList.add("SelectedCategoryList__article-link");
+      sectionArticle.appendChild(link);
+      var img = document.createElement("img");
+      img.classList.add("SelectedCategoryList__image");
+      img.src = imageUrl;
+      link.appendChild(img);
+      var divArticle = document.createElement("div");
+      divArticle.classList.add('SelectedCategoryList__wrapper');
+      link.appendChild(divArticle);
+      var h2Article = document.createElement("h2");
+      h2Article.textContent = titleItem;
+      divArticle.appendChild(h2Article);
+      var article = document.createElement("article");
+      article.textContent = articleItem;
+      divArticle.appendChild(article);
+    }
+  }); //    axios.get(url).then((response) => {
+  //       const articleArray = response.data.results;
+  //       // loops through Arrar
+  //    });
 }); // rotate arrow-button and display articles expand/collapsed when toggled
 
 document.querySelector("main").addEventListener("click", function (e) {

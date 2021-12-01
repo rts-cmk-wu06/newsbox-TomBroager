@@ -6,7 +6,6 @@ let touchCoordinateEnd;
 let touchElement;
 let swipeItem;
 
-const archiveArray = [];
 
 // touch event
 main.addEventListener("touchstart", (e) => {

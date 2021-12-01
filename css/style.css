@@ -1513,7 +1513,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  background-color: #87bcbf;
 }
 .SelectedCategoryList .SelectedCategoryList__article .SelectedCategoryList__archiveButton i {
   color: white;

@@ -1,6 +1,9 @@
 const url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 const main = document.querySelector("main");
 
+const archiveArray = JSON.parse(localStorage.getItem("savedArticles"));
+console.log(archiveArray);
+
 // localStorage Array contains selected sections/categories
 const sectionList = JSON.parse(localStorage.getItem("selectedCategories"));
 
@@ -56,57 +59,59 @@ sectionList.forEach((obj) => {
    articleContainer.classList.add("SelectedCategoryList__article-container");
    section.appendChild(articleContainer);
 
-   axios.get(url).then((response) => {
-      const articleArray = response.data.results;
-      // loops through Arrar
-      articleArray.forEach((obj) => {
-         const imageArray = obj.multimedia;
-         const imageUrl = imageArray.map(({ url }) => url);
-         const sectionItem = obj.section;
-         const titleItem = obj.title;
-         const articleItem = obj.abstract;
-         const articleUrl = obj.url;
+   archiveArray.forEach((obj) => {
+      const imageArray = obj.multimedia;
+    //   const imageUrl = imageArray.map(({ url }) => url);
+      const imageUrl = obj.image;
+      const sectionItem = obj.section;
+      const titleItem = obj.title;
+      const articleItem = obj.abstract;
+      const articleUrl = obj.url;
 
-         // add article component to section if sectionItem = sectionName
-         if (sectionItem === sectionName) {
-            // creates article components
-            const sectionArticle = document.createElement("section");
-            sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
-            articleContainer.appendChild(sectionArticle);
+      // add article component to section if sectionItem = sectionName
+      if (sectionItem === sectionName) {
+         // creates article components
+         const sectionArticle = document.createElement("section");
+         sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
+         articleContainer.appendChild(sectionArticle);
 
-            const archiveButton = document.createElement('div');
-            archiveButton.classList.add('SelectedCategoryList__archiveButton');
-            sectionArticle.appendChild(archiveButton);
+         const archiveButton = document.createElement('div');
+         archiveButton.classList.add('SelectedCategoryList__archiveButton');
+         sectionArticle.appendChild(archiveButton);
 
-            const archiveIcon = document.createElement('i');
-            archiveIcon.classList.add('fas', 'fa-inbox');
-            archiveButton.appendChild(archiveIcon);
+         const archiveIcon = document.createElement('i');
+         archiveIcon.classList.add('fas', 'fa-inbox');
+         archiveButton.appendChild(archiveIcon);
 
-            const link = document.createElement("a");
-            link.setAttribute("href", articleUrl);
-            link.setAttribute("target", "_blank");
-            link.classList.add("SelectedCategoryList__article-link");
-            sectionArticle.appendChild(link);
+         const link = document.createElement("a");
+         link.setAttribute("href", articleUrl);
+         link.setAttribute("target", "_blank");
+         link.classList.add("SelectedCategoryList__article-link");
+         sectionArticle.appendChild(link);
 
-            const img = document.createElement("img");
-            img.classList.add("SelectedCategoryList__image");
-            img.src = imageUrl;
-            link.appendChild(img);
+         const img = document.createElement("img");
+         img.classList.add("SelectedCategoryList__image");
+         img.src = imageUrl;
+         link.appendChild(img);
 
-            const divArticle = document.createElement("div");
-            divArticle.classList.add('SelectedCategoryList__wrapper');
-            link.appendChild(divArticle);
+         const divArticle = document.createElement("div");
+         divArticle.classList.add('SelectedCategoryList__wrapper');
+         link.appendChild(divArticle);
 
-            const h2Article = document.createElement("h2");
-            h2Article.textContent = titleItem;
-            divArticle.appendChild(h2Article);
+         const h2Article = document.createElement("h2");
+         h2Article.textContent = titleItem;
+         divArticle.appendChild(h2Article);
 
-            const article = document.createElement("article");
-            article.textContent = articleItem;
-            divArticle.appendChild(article);
-         }
-      });
+         const article = document.createElement("article");
+         article.textContent = articleItem;
+         divArticle.appendChild(article);
+      }
    });
+
+//    axios.get(url).then((response) => {
+//       const articleArray = response.data.results;
+//       // loops through Arrar
+//    });
 });
 
 // rotate arrow-button and display articles expand/collapsed when toggled
