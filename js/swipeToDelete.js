@@ -46,7 +46,9 @@ main.addEventListener("click", (e) => {
     // target element to remove on click
     const parentElement = target.closest('.SelectedCategoryList__article')
 
-    // target article heading and use it to check for duplicated value in delArticles
+    // target article heading textContent
+    // then loop trough delArticle Array to check for duplicated text/value
+    // If duplicated text/value found, then "remove" object from delArticle Array
     if(parentElement){
         const heading = parentElement.querySelector('h2').textContent;
 
