@@ -2,8 +2,7 @@
 
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe9ulL9BEMO9EaG0pGFLxHHHulT";
 var main = document.querySelector("main");
-var archiveArray = JSON.parse(localStorage.getItem("savedArticles"));
-console.log(archiveArray); // localStorage Array contains selected sections/categories
+var archiveArray = JSON.parse(localStorage.getItem("savedArticles")); // localStorage Array contains selected sections/categories
 
 var sectionList = JSON.parse(localStorage.getItem("selectedCategories")); // svg badge
 
@@ -32,13 +31,13 @@ sectionList.forEach(function (obj) {
   var arrowIcon = document.createElement("i");
   arrowIcon.classList.add("fas", "fa-chevron-right", "SelectedCategoryList__i");
   button.appendChild(arrowIcon);
-  var articleContainer = document.createElement("div"); //  articleContainer.textContent = 'Der er ingen artikler';
-
+  var articleContainer = document.createElement("div");
   articleContainer.classList.add("SelectedCategoryList__article-container");
-  section.appendChild(articleContainer);
-  var emptyArchiveSection = document.createElement('p');
-  emptyArchiveSection.textContent = 'No saved articles';
-  emptyArchiveSection.classList.add('SelectedCategoryList__paragraph');
+  section.appendChild(articleContainer); // if there is no article stored under a section
+
+  var emptyArchiveSection = document.createElement("p");
+  emptyArchiveSection.textContent = "No saved articles";
+  emptyArchiveSection.classList.add("SelectedCategoryList__paragraph");
   articleContainer.appendChild(emptyArchiveSection);
   archiveArray.forEach(function (obj) {
     var imageArray = obj.multimedia; //   const imageUrl = imageArray.map(({ url }) => url);
@@ -50,16 +49,17 @@ sectionList.forEach(function (obj) {
     var articleUrl = obj.url; // add article component to section if sectionItem = sectionName
 
     if (sectionItem === sectionName) {
+      // remove paragraph tag with message 'No saved articles'
       emptyArchiveSection.remove(); // creates article components
 
       var sectionArticle = document.createElement("section");
-      sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
+      sectionArticle.classList.add("SelectedCategoryList__article", "animate__animated");
       articleContainer.appendChild(sectionArticle);
-      var archiveButton = document.createElement('div');
-      archiveButton.classList.add('SelectedCategoryList__deleteButton');
+      var archiveButton = document.createElement("div");
+      archiveButton.classList.add("SelectedCategoryList__deleteButton");
       sectionArticle.appendChild(archiveButton);
-      var archiveIcon = document.createElement('i');
-      archiveIcon.classList.add('fas', 'fa-trash');
+      var archiveIcon = document.createElement("i");
+      archiveIcon.classList.add("fas", "fa-trash");
       archiveButton.appendChild(archiveIcon);
       var link = document.createElement("a");
       link.setAttribute("href", articleUrl);
@@ -71,7 +71,7 @@ sectionList.forEach(function (obj) {
       img.src = imageUrl;
       link.appendChild(img);
       var divArticle = document.createElement("div");
-      divArticle.classList.add('SelectedCategoryList__wrapper');
+      divArticle.classList.add("SelectedCategoryList__wrapper");
       link.appendChild(divArticle);
       var h2Article = document.createElement("h2");
       h2Article.textContent = titleItem;

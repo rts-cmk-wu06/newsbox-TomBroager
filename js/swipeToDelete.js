@@ -31,10 +31,12 @@ main.addEventListener("touchstart", (e) => {
     touchElement.addEventListener("touchend", (e) => {
         touchCoordinateEnd = e.changedTouches[0].clientX;
         
-        if (touchCoordinateEnd < touchCoordinateStart - 40) {
-            swipeItem.style.transform = `translateX(-${80}px)`;
-        } else {
-            swipeItem.style.transform = `translateX(${0}px)`;
+        if(swipeItem){
+            if (touchCoordinateEnd < touchCoordinateStart - 40) {
+                swipeItem.style.transform = `translateX(-${80}px)`;
+            } else {
+                swipeItem.style.transform = `translateX(${0}px)`;
+            }
         }
     });
 });

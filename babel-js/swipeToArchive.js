@@ -25,10 +25,12 @@ main.addEventListener("touchstart", function (e) {
   touchElement.addEventListener("touchend", function (e) {
     touchCoordinateEnd = e.changedTouches[0].clientX;
 
-    if (touchCoordinateEnd < touchCoordinateStart - 40) {
-      swipeItem.style.transform = "translateX(-".concat(80, "px)");
-    } else {
-      swipeItem.style.transform = "translateX(".concat(0, "px)");
+    if (swipeItem) {
+      if (touchCoordinateEnd < touchCoordinateStart - 40) {
+        swipeItem.style.transform = "translateX(-".concat(80, "px)");
+      } else {
+        swipeItem.style.transform = "translateX(".concat(0, "px)");
+      }
     }
   });
 }); // when archive button are clicked then save article data as an object and push object to archiveArray

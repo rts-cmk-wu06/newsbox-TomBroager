@@ -6,7 +6,10 @@ var touchCoordinateStart;
 var touchCoordinateMove;
 var touchCoordinateEnd;
 var touchElement;
-var swipeItem; // touch event
+var swipeItem;
+var savedArticles = JSON.parse(localStorage.getItem('savedArticles'));
+var delArticles = savedArticles || [];
+console.log(delArticles); // touch event
 
 main.addEventListener("touchstart", function (e) {
   touchElement = e.target; // item to swipe
@@ -24,10 +27,12 @@ main.addEventListener("touchstart", function (e) {
   touchElement.addEventListener("touchend", function (e) {
     touchCoordinateEnd = e.changedTouches[0].clientX;
 
-    if (touchCoordinateEnd < touchCoordinateStart - 40) {
-      swipeItem.style.transform = "translateX(-".concat(80, "px)");
-    } else {
-      swipeItem.style.transform = "translateX(".concat(0, "px)");
+    if (swipeItem) {
+      if (touchCoordinateEnd < touchCoordinateStart - 40) {
+        swipeItem.style.transform = "translateX(-".concat(80, "px)");
+      } else {
+        swipeItem.style.transform = "translateX(".concat(0, "px)");
+      }
     }
   });
 }); // when delete button is clicked then delete article object from localStorage
@@ -35,7 +40,18 @@ main.addEventListener("touchstart", function (e) {
 main.addEventListener("click", function (e) {
   var target = e.target; // target element to remove on click
 
-  var parentElement = target.closest('.SelectedCategoryList__article'); // target section name for use in articleArray
+  var parentElement = target.closest('.SelectedCategoryList__article'); // target article heading textContent
+  // then filter trough delArticle Array to check for duplicated text/value
+  // If duplicated text/value found, then don't add object to filtered delArticle Array
+
+  if (parentElement) {
+    var heading = parentElement.querySelector('h2').textContent;
+    delArticles = delArticles.filter(function (item) {
+      return heading !== item.title;
+    });
+    localStorage.setItem('savedArticles', JSON.stringify(delArticles));
+  } // target section name for use in articleArray
+
 
   if (parentElement) {
     parentElement.classList.add('animate__zoomOutUp');
