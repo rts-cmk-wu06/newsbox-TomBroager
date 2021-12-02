@@ -47,7 +47,7 @@ main.addEventListener("click", (e) => {
     const parentElement = target.closest('.SelectedCategoryList__article')
 
     // target article heading textContent
-    // then loop trough delArticle Array to check for duplicated text/value
+    // then filter trough delArticle Array to check for duplicated text/value
     // If duplicated text/value found, then don't add object to filtered delArticle Array
     if(parentElement){
         const heading = parentElement.querySelector('h2').textContent;
