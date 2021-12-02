@@ -48,7 +48,7 @@ main.addEventListener("click", (e) => {
 
     // target article heading textContent
     // then loop trough delArticle Array to check for duplicated text/value
-    // If duplicated text/value found, then "remove" object from delArticle Array
+    // If duplicated text/value found, then don't add object to filtered delArticle Array
     if(parentElement){
         const heading = parentElement.querySelector('h2').textContent;
 
