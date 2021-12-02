@@ -55,7 +55,14 @@
     
     // extend article component
     .display-block {
+        flex: 1;
         display: block;
+    }
+
+    .SelectedCategoryList__paragraph {
+        text-align: center;
+        color: red;
+        padding: 3rem;
     }
 
     // article component style

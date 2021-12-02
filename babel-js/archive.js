@@ -32,9 +32,14 @@ sectionList.forEach(function (obj) {
   var arrowIcon = document.createElement("i");
   arrowIcon.classList.add("fas", "fa-chevron-right", "SelectedCategoryList__i");
   button.appendChild(arrowIcon);
-  var articleContainer = document.createElement("div");
+  var articleContainer = document.createElement("div"); //  articleContainer.textContent = 'Der er ingen artikler';
+
   articleContainer.classList.add("SelectedCategoryList__article-container");
   section.appendChild(articleContainer);
+  var emptyArchiveSection = document.createElement('p');
+  emptyArchiveSection.textContent = 'No saved articles';
+  emptyArchiveSection.classList.add('SelectedCategoryList__paragraph');
+  articleContainer.appendChild(emptyArchiveSection);
   archiveArray.forEach(function (obj) {
     var imageArray = obj.multimedia; //   const imageUrl = imageArray.map(({ url }) => url);
 
@@ -45,7 +50,8 @@ sectionList.forEach(function (obj) {
     var articleUrl = obj.url; // add article component to section if sectionItem = sectionName
 
     if (sectionItem === sectionName) {
-      // creates article components
+      emptyArchiveSection.remove(); // creates article components
+
       var sectionArticle = document.createElement("section");
       sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
       articleContainer.appendChild(sectionArticle);

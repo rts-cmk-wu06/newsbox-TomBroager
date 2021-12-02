@@ -2,7 +2,6 @@ const url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uZRSzVe
 const main = document.querySelector("main");
 
 const archiveArray = JSON.parse(localStorage.getItem("savedArticles"));
-console.log(archiveArray);
 
 // localStorage Array contains selected sections/categories
 const sectionList = JSON.parse(localStorage.getItem("selectedCategories"));
@@ -59,9 +58,15 @@ sectionList.forEach((obj) => {
    articleContainer.classList.add("SelectedCategoryList__article-container");
    section.appendChild(articleContainer);
 
+   // if there is no article stored under a section
+   const emptyArchiveSection = document.createElement("p");
+   emptyArchiveSection.textContent = "No saved articles";
+   emptyArchiveSection.classList.add("SelectedCategoryList__paragraph");
+   articleContainer.appendChild(emptyArchiveSection);
+
    archiveArray.forEach((obj) => {
       const imageArray = obj.multimedia;
-    //   const imageUrl = imageArray.map(({ url }) => url);
+      //   const imageUrl = imageArray.map(({ url }) => url);
       const imageUrl = obj.image;
       const sectionItem = obj.section;
       const titleItem = obj.title;
@@ -70,17 +75,19 @@ sectionList.forEach((obj) => {
 
       // add article component to section if sectionItem = sectionName
       if (sectionItem === sectionName) {
+        // remove paragraph tag with message 'No saved articles'
+         emptyArchiveSection.remove();
          // creates article components
          const sectionArticle = document.createElement("section");
-         sectionArticle.classList.add("SelectedCategoryList__article", 'animate__animated');
+         sectionArticle.classList.add("SelectedCategoryList__article", "animate__animated");
          articleContainer.appendChild(sectionArticle);
 
-         const archiveButton = document.createElement('div');
-         archiveButton.classList.add('SelectedCategoryList__deleteButton');
+         const archiveButton = document.createElement("div");
+         archiveButton.classList.add("SelectedCategoryList__deleteButton");
          sectionArticle.appendChild(archiveButton);
 
-         const archiveIcon = document.createElement('i');
-         archiveIcon.classList.add('fas', 'fa-trash');
+         const archiveIcon = document.createElement("i");
+         archiveIcon.classList.add("fas", "fa-trash");
          archiveButton.appendChild(archiveIcon);
 
          const link = document.createElement("a");
@@ -95,7 +102,7 @@ sectionList.forEach((obj) => {
          link.appendChild(img);
 
          const divArticle = document.createElement("div");
-         divArticle.classList.add('SelectedCategoryList__wrapper');
+         divArticle.classList.add("SelectedCategoryList__wrapper");
          link.appendChild(divArticle);
 
          const h2Article = document.createElement("h2");
@@ -108,10 +115,10 @@ sectionList.forEach((obj) => {
       }
    });
 
-//    axios.get(url).then((response) => {
-//       const articleArray = response.data.results;
-//       // loops through Arrar
-//    });
+   //    axios.get(url).then((response) => {
+   //       const articleArray = response.data.results;
+   //       // loops through Arrar
+   //    });
 });
 
 // rotate arrow-button and display articles expand/collapsed when toggled

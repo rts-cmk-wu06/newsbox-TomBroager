@@ -1502,7 +1502,13 @@ h1 {
   display: none;
 }
 .SelectedCategoryList .display-block {
+  flex: 1;
   display: block;
+}
+.SelectedCategoryList .SelectedCategoryList__paragraph {
+  text-align: center;
+  color: red;
+  padding: 3rem;
 }
 .SelectedCategoryList .SelectedCategoryList__article {
   display: grid;

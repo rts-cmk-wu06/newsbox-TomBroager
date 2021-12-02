@@ -6,6 +6,10 @@ let touchCoordinateEnd;
 let touchElement;
 let swipeItem;
 
+const savedArticles = JSON.parse(localStorage.getItem('savedArticles'));
+
+let delArticles = savedArticles || [];
+console.log(delArticles);
 
 // touch event
 main.addEventListener("touchstart", (e) => {
@@ -41,6 +45,14 @@ main.addEventListener("click", (e) => {
 
     // target element to remove on click
     const parentElement = target.closest('.SelectedCategoryList__article')
+
+    // target article heading and use it to check for duplicated value in delArticles
+    if(parentElement){
+        const heading = parentElement.querySelector('h2').textContent;
+
+        delArticles = delArticles.filter(item => heading !== item.title)
+        localStorage.setItem('savedArticles', JSON.stringify(delArticles));
+    }
     
     // target section name for use in articleArray
     if(parentElement) {

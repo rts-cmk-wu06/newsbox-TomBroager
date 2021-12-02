@@ -38,19 +38,21 @@ main.addEventListener("click", function (e) {
 
   var parentElement = target.closest('.SelectedCategoryList__article'); // target section name for use in articleArray
 
-  var sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
-  var sectionName = sectionHeading[0].textContent;
-  var articleObject = {
-    section: sectionName,
-    url: parentElement.querySelector(".SelectedCategoryList__article-link").href,
-    image: parentElement.querySelector("img").src,
-    title: parentElement.querySelector("h2").textContent,
-    "abstract": parentElement.querySelector("article").textContent
-  };
-  archiveArray.push(articleObject);
-  localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
-  parentElement.classList.add('animate__zoomOutUp');
-  setTimeout(function () {
-    parentElement.remove();
-  }, 1000);
+  if (parentElement) {
+    var sectionHeading = parentElement.closest('.SelectedCategoryList').getElementsByTagName('h2');
+    var sectionName = sectionHeading[0].textContent;
+    var articleObject = {
+      section: sectionName,
+      url: parentElement.querySelector(".SelectedCategoryList__article-link").href,
+      image: parentElement.querySelector("img").src,
+      title: parentElement.querySelector("h2").textContent,
+      "abstract": parentElement.querySelector("article").textContent
+    };
+    archiveArray.push(articleObject);
+    parentElement.classList.add('animate__zoomOutUp');
+    localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
+    setTimeout(function () {
+      parentElement.remove();
+    }, 1000);
+  }
 });
