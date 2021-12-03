@@ -7,7 +7,8 @@ var touchCoordinateMove;
 var touchCoordinateEnd;
 var touchElement;
 var swipeItem;
-var archiveArray = []; // touch event
+var savedArticles = JSON.parse(localStorage.getItem('savedArticles'));
+var archiveArray = savedArticles || []; // touch event
 
 main.addEventListener("touchstart", function (e) {
   touchElement = e.target; // item to swipe
@@ -50,8 +51,8 @@ main.addEventListener("click", function (e) {
       title: parentElement.querySelector("h2").textContent,
       "abstract": parentElement.querySelector("article").textContent
     };
-    archiveArray.push(articleObject);
     parentElement.classList.add('animate__zoomOutUp');
+    archiveArray.push(articleObject);
     localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
     setTimeout(function () {
       parentElement.remove();

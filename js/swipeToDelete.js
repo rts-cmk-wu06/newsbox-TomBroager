@@ -9,7 +9,6 @@ let swipeItem;
 const savedArticles = JSON.parse(localStorage.getItem('savedArticles'));
 
 let delArticles = savedArticles || [];
-console.log(delArticles);
 
 // touch event
 main.addEventListener("touchstart", (e) => {

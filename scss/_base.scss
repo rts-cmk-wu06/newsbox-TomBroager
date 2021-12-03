@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-
+// darkmode
 .dark-mode {
     background-color: $primary-three;
     header {
@@ -38,6 +38,10 @@
     
     article {
         color: $typo-color-three;
+    }
+
+    .SelectedCategoryList__article-link {
+        background-color: $primary-four !important;
     }
 }
 

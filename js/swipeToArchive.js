@@ -6,7 +6,9 @@ let touchCoordinateEnd;
 let touchElement;
 let swipeItem;
 
-const archiveArray = [];
+const savedArticles = JSON.parse(localStorage.getItem('savedArticles'));
+
+let archiveArray = savedArticles || [];
 
 // touch event
 main.addEventListener("touchstart", (e) => {
@@ -58,8 +60,9 @@ main.addEventListener("click", (e) => {
             abstract: parentElement.querySelector("article").textContent,
         };
         
-        archiveArray.push(articleObject);
         parentElement.classList.add('animate__zoomOutUp');
+
+        archiveArray.push(articleObject);
         
         localStorage.setItem('savedArticles', JSON.stringify(archiveArray));
         

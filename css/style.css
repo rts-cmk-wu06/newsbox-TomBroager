@@ -1424,6 +1424,9 @@
 .dark-mode article {
   color: #ffffff;
 }
+.dark-mode .SelectedCategoryList__article-link {
+  background-color: #d95454 !important;
+}
 
 body {
   height: 100vh;

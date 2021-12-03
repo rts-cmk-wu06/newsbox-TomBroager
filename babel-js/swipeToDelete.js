@@ -8,8 +8,7 @@ var touchCoordinateEnd;
 var touchElement;
 var swipeItem;
 var savedArticles = JSON.parse(localStorage.getItem('savedArticles'));
-var delArticles = savedArticles || [];
-console.log(delArticles); // touch event
+var delArticles = savedArticles || []; // touch event
 
 main.addEventListener("touchstart", function (e) {
   touchElement = e.target; // item to swipe
