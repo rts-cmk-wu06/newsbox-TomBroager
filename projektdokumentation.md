@@ -45,19 +45,19 @@ Animate.css: animationen når man arkiverer eller sletter artikler bliver hentet
 
 News setting page togglebuttons:
 
-	Animation gør brug af toggle, classes og CSS transform: translate; til at toggle switch.
-	Jeg har brugt button og div tag - en anden gang vil jeg nok bruge input og checkbox.
+Animation gør brug af toggle, classes og CSS transform: translate; til at toggle switch.
+Jeg har brugt button og div tag - en anden gang vil jeg nok bruge input og checkbox.
 
-	Når togglebutton bliver toggled on/off får den value true/false.
+Når togglebutton bliver toggled on/off får den value true/false.
 			   
-	Som validering for et push af section navn til selectedSection Array, bruger jeg true/false value samt filter() method som tjekker for duplikeret values i selectedSection Array.
+Som validering for et push af section navn til selectedSection Array, bruger jeg true/false value samt filter() method som tjekkerfor duplikeret values i selectedSection Array.
 
 ---
 ### Vurdering af egen indsats & gennemførelse af opgaveforløbet (Arbejdsgangen)
 
 (Hvad gik godt. Hvor prioriterede du forkert. Klagesange fra de varme lande om halvfærdigt produkt, på grund af manglende nattesøvn, fordi din kæle-skildpadde havde tandpine er IKKE interessante.)
 
-Det lykkedes mig ikke at få lavet en god og rigtig darkmode data struktur - jeg ved godt hvordan, men prioriterede ikke tiden til det. Derfor blev det en cowboy løsning - og det virker.
+Det lykkedes mig ikke at få lavet en god og rigtig darkmode data struktur - jeg ve godt hvordan, men prioriterede ikke tiden til det. Derfor blev det en cowboy løsning - og det virker.
 
 fetch af New York Times API gik rigtig godt.
 
